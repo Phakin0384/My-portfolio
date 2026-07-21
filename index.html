@@ -83,7 +83,9 @@
   .scard h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent2)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:8px;
-    padding:6px 11px;font-size:13px;font-family:'JetBrains Mono',monospace}
+    padding:6px 11px 6px 8px;font-size:13px;font-family:'JetBrains Mono',monospace;
+    display:inline-flex;align-items:center;gap:7px}
+  .chip img,.chip svg{width:15px;height:15px;flex-shrink:0}
 
   /* PROJECTS */
   .proj{margin-top:26px;display:grid;gap:22px}
@@ -209,15 +211,34 @@
     <div class="grid skills">
       <div class="scard">
         <h3><span class="dot"></span><span class="en">Programming</span><span class="th">ภาษาโปรแกรม</span></h3>
-        <div class="chips"><span class="chip">Python</span><span class="chip">C / C++</span><span class="chip">JavaScript</span><span class="chip">Java</span></div>
+        <div class="chips">
+          <span class="chip"><img src="https://cdn.simpleicons.org/python" alt="">Python</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/c" alt="">C</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/cplusplus" alt="">C++</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/javascript" alt="">JavaScript</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/openjdk/FFFFFF" alt="">Java</span>
+        </div>
       </div>
       <div class="scard">
         <h3><span class="dot"></span><span class="en">Web &amp; Tools</span><span class="th">เว็บและเครื่องมือ</span></h3>
-        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">HTML/CSS</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Figma</span></div>
+        <div class="chips">
+          <span class="chip"><img src="https://cdn.simpleicons.org/react" alt="">React</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/nodedotjs" alt="">Node.js</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/html5" alt="">HTML</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/css" alt="">CSS</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/mysql" alt="">MySQL</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/git" alt="">Git</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/docker" alt="">Docker</span>
+          <span class="chip"><img src="https://cdn.simpleicons.org/figma" alt="">Figma</span>
+        </div>
       </div>
       <div class="scard">
         <h3><span class="dot"></span><span class="en">Data &amp; Low-Code</span><span class="th">ข้อมูลและ Low-Code</span></h3>
-        <div class="chips"><span class="chip">Dataiku</span><span class="chip">Power Apps</span><span class="chip">Data Pipeline</span></div>
+        <div class="chips">
+          <span class="chip"><img src="https://cdn.simpleicons.org/dataiku" alt="">Dataiku</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#c05fd6" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>Power Apps</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3ad6c0" stroke-width="2" stroke-linecap="round"><circle cx="4" cy="12" r="2"/><path d="M6 12h4"/><rect x="10" y="9" width="6" height="6" rx="1"/><path d="M16 12h4"/><circle cx="21" cy="12" r="1.6"/></svg>Data Pipeline</span>
+        </div>
       </div>
       <div class="scard">
         <h3><span class="dot"></span><span class="en">Strengths</span><span class="th">จุดแข็ง</span></h3>
@@ -250,7 +271,13 @@
             <li><span class="en">Designed a friendly, intuitive UI linking user input to AI-generated recommendations seamlessly.</span><span class="th">ออกแบบ UI ที่เป็นมิตรและเข้าใจง่าย เชื่อมข้อมูลของผู้ใช้เข้ากับคำแนะนำจาก AI ได้อย่างราบรื่น</span></li>
             <li><span class="en">Improved users' time management and personal productivity through smart planning.</span><span class="th">ยกระดับการบริหารจัดการเวลาและประสิทธิผลส่วนบุคคลผ่านการวางแผนอัจฉริยะ</span></li>
           </ul>
-          <div class="stack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MySQL</span><span class="chip">AI Integration</span><span class="chip">Figma</span></div>
+          <div class="stack">
+            <span class="chip"><img src="https://cdn.simpleicons.org/react" alt="">React</span>
+            <span class="chip"><img src="https://cdn.simpleicons.org/nodedotjs" alt="">Node.js</span>
+            <span class="chip"><img src="https://cdn.simpleicons.org/mysql" alt="">MySQL</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="#5b8cff"><path d="M12 2.5l1.6 4.8L18.5 9l-4.9 1.7L12 15.5l-1.6-4.8L5.5 9l4.9-1.7L12 2.5z"/><path d="M19 13.5l.8 2.3 2.3.9-2.3.9-.8 2.3-.8-2.3-2.3-.9 2.3-.9.8-2.3z"/></svg>AI Integration</span>
+            <span class="chip"><img src="https://cdn.simpleicons.org/figma" alt="">Figma</span>
+          </div>
         </div>
       </div>
 
@@ -269,7 +296,12 @@
             <li><span class="en">Developed Power Apps solutions to digitize paper-based document processes across FIS, QO, and DMTC departments into a clear digital dashboard.</span><span class="th">พัฒนาแอปพลิเคชันด้วย Power Apps เปลี่ยนกระบวนการเอกสารกระดาษข้ามแผนก FIS, QO และ DMTC ให้เป็นแพลตฟอร์มดิจิทัลที่แสดงข้อมูลภาพรวมได้ชัดเจน</span></li>
             <li><span class="en">Improved cross-department workflow efficiency through better data management.</span><span class="th">เพิ่มประสิทธิภาพการทำงานข้ามแผนกด้วยการจัดการข้อมูลที่ดีขึ้น</span></li>
           </ul>
-          <div class="stack"><span class="chip">Dataiku</span><span class="chip">Power Apps</span><span class="chip">Data Pipeline</span><span class="chip">Dashboards</span></div>
+          <div class="stack">
+            <span class="chip"><img src="https://cdn.simpleicons.org/dataiku" alt="">Dataiku</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#c05fd6" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>Power Apps</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3ad6c0" stroke-width="2" stroke-linecap="round"><circle cx="4" cy="12" r="2"/><path d="M6 12h4"/><rect x="10" y="9" width="6" height="6" rx="1"/><path d="M16 12h4"/><circle cx="21" cy="12" r="1.6"/></svg>Data Pipeline</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#5b8cff" stroke-width="2" stroke-linecap="round"><path d="M5 20V11"/><path d="M12 20V4"/><path d="M19 20v-6"/></svg>Dashboards</span>
+          </div>
           <div class="gallery" aria-label="Dataiku pipeline screenshots">
             <img src="images/pipelines/cq.jpg" alt="CQ data pipeline" loading="lazy" onclick="openLightbox(this)">
             <img src="images/pipelines/fyt-cx-all.jpg" alt="FYT_CX_All data pipeline" loading="lazy" onclick="openLightbox(this)">
