@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Phakin Saekhow — IT & Software Developer</title>
+<meta name="description" content="Phakin Saekhow — Computer Engineering student building system design, data pipeline, and full-stack web solutions.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Phakin Saekhow — IT & Software Developer">
+<meta property="og:description" content="Computer Engineering student building system design, data pipeline, and full-stack web solutions.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -103,6 +109,18 @@
   .photoslot .play{width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;
     display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;
     box-shadow:0 8px 24px rgba(91,140,255,.5)}
+
+  /* GALLERY */
+  .gallery{display:flex;gap:10px;overflow-x:auto;margin-top:18px;padding-bottom:8px}
+  .gallery img{height:120px;border-radius:10px;border:1px solid var(--line);cursor:zoom-in;
+    flex-shrink:0;transition:.2s}
+  .gallery img:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .gallery::-webkit-scrollbar{height:6px}
+  .gallery::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(5,8,20,.9);z-index:100;
+    align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:var(--shadow)}
 
   /* EDUCATION / TWO-COL */
   .two{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:26px}
@@ -252,6 +270,13 @@
             <li><span class="en">Improved cross-department workflow efficiency through better data management.</span><span class="th">เพิ่มประสิทธิภาพการทำงานข้ามแผนกด้วยการจัดการข้อมูลที่ดีขึ้น</span></li>
           </ul>
           <div class="stack"><span class="chip">Dataiku</span><span class="chip">Power Apps</span><span class="chip">Data Pipeline</span><span class="chip">Dashboards</span></div>
+          <div class="gallery" aria-label="Dataiku pipeline screenshots">
+            <img src="images/pipelines/cq.png" alt="CQ data pipeline" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/pipelines/fyt-cx-all.png" alt="FYT_CX_All data pipeline" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/pipelines/fyt-cx-f.png" alt="FYT_CX_F data pipeline" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/pipelines/fyt-cx-c.png" alt="FYT_CX_C data pipeline" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/pipelines/database-pdo.png" alt="Database_PDO data pipeline" loading="lazy" onclick="openLightbox(this)">
+          </div>
         </div>
       </div>
 
@@ -297,6 +322,10 @@
   <div class="wrap">© <span id="yr"></span> Phakin Saekhow · <span class="en">Built as an interactive portfolio</span><span class="th">พอร์ตโฟลิโอแบบอินเทอร์แอกทีฟ</span></div>
 </footer>
 
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <script>
   function toggleLang(){
     const b=document.body;
@@ -308,6 +337,15 @@
   // scroll reveal
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
   document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+  function openLightbox(imgEl){
+    const lb=document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src=imgEl.src;
+    document.getElementById('lightboxImg').alt=imgEl.alt;
+    lb.classList.add('open');
+  }
+  function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
 </script>
 </body>
 </html>
