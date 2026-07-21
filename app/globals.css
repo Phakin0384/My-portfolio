@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b1020;
+  --color-bg2: #0f1730;
+  --color-card: #141d3a;
+  --color-card2: #182446;
+  --color-line: #26325c;
+  --color-text: #e6ebff;
+  --color-muted: #9aa6cf;
+  --color-accent: #5b8cff;
+  --color-accent2: #3ad6c0;
+  --color-chip: #1b2750;
+
+  --font-sans: var(--font-inter), var(--font-noto-thai), system-ui, sans-serif;
+  --font-thai: var(--font-noto-thai), var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, #1a2a5e 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, #123a44 0%, transparent 55%),
+    var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.chip {
+  background: var(--color-chip);
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+  border-radius: 8px;
+  padding: 6px 11px 6px 8px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.gallery::-webkit-scrollbar {
+  height: 6px;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 3px;
+}
