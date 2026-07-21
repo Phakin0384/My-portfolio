@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phakin Saekhow — IT & Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1020;
+    --bg2:#0f1730;
+    --card:#141d3a;
+    --card2:#182446;
+    --line:#26325c;
+    --text:#e6ebff;
+    --muted:#9aa6cf;
+    --accent:#5b8cff;
+    --accent2:#3ad6c0;
+    --chip:#1b2750;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter','Noto Sans Thai',system-ui,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#1a2a5e 0%,transparent 60%),radial-gradient(900px 500px at -10% 20%,#123a44 0%,transparent 55%),var(--bg);
+    color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  [lang-th] .en,[data-lang="th"] .en{display:none}
+  [data-lang="th"] .th{display:inline}
+  .th{display:none}
+  body[data-lang="th"]{font-family:'Noto Sans Thai','Inter',sans-serif}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(11,16,32,.72);border-bottom:1px solid var(--line)}
+  .navin{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:800;letter-spacing:.3px;font-size:18px}
+  .brand span{color:var(--accent)}
+  .navlinks{display:flex;gap:22px;align-items:center}
+  .navlinks a{color:var(--muted);font-weight:500;font-size:14px}
+  .navlinks a:hover{color:var(--text)}
+  .toggle{border:1px solid var(--line);background:var(--chip);color:var(--text);
+    border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;
+    display:flex;gap:6px;align-items:center}
+  .toggle b{color:var(--accent)}
+  @media(max-width:720px){.navlinks a:not(.toggle-wrap){display:none}}
+
+  /* HERO */
+  header.hero{padding:80px 0 60px}
+  .kicker{font-family:'JetBrains Mono',monospace;color:var(--accent2);font-size:14px;letter-spacing:1px;margin-bottom:14px}
+  h1{font-size:clamp(34px,6vw,56px);line-height:1.05;font-weight:800;letter-spacing:-1px}
+  .hero .sub{font-size:clamp(18px,2.4vw,22px);color:var(--accent);font-weight:600;margin-top:10px}
+  .hero p.lead{color:var(--muted);max-width:640px;margin-top:20px;font-size:16.5px}
+  .cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .btn{border-radius:12px;padding:12px 20px;font-weight:600;font-size:15px;border:1px solid var(--line);
+    display:inline-flex;gap:8px;align-items:center;transition:.2s}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),#7aa2ff);color:#fff;border:none}
+  .btn.primary:hover{transform:translateY(-2px)}
+  .btn.ghost{background:var(--card);color:var(--text)}
+  .btn.ghost:hover{border-color:var(--accent)}
+
+  section{padding:56px 0;border-top:1px solid rgba(38,50,92,.5)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;color:var(--accent2);font-size:13px;letter-spacing:1px}
+  h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;margin:8px 0 6px;letter-spacing:-.5px}
+  .lead2{color:var(--muted);max-width:680px;margin-bottom:8px}
+
+  /* SKILLS */
+  .grid{display:grid;gap:18px}
+  .skills{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:26px}
+  .scard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 22px;box-shadow:var(--shadow)}
+  .scard h3{font-size:15px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .scard h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent2)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--chip);border:1px solid var(--line);color:var(--text);border-radius:8px;
+    padding:6px 11px;font-size:13px;font-family:'JetBrains Mono',monospace}
+
+  /* PROJECTS */
+  .proj{margin-top:26px;display:grid;gap:22px}
+  .pcard{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .pcard .body{padding:26px}
+  .pcard .tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent2);letter-spacing:.5px}
+  .pcard h3{font-size:21px;margin:8px 0 4px}
+  .pcard .meta{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+  .pcard p{color:#c7cff0;font-size:15px}
+  .pcard ul{margin:12px 0 4px 0;padding-left:0;list-style:none}
+  .pcard li{color:#c7cff0;font-size:14.5px;padding-left:22px;position:relative;margin-bottom:8px}
+  .pcard li::before{content:"▹";position:absolute;left:0;color:var(--accent2)}
+  .pcard .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .photoslot{background:repeating-linear-gradient(45deg,#131c38,#131c38 12px,#16203f 12px,#16203f 24px);
+    min-height:230px;display:flex;align-items:center;justify-content:center;color:var(--muted);
+    font-size:14px;text-align:center;border-bottom:1px solid var(--line)}
+  .photoslot img{width:100%;height:100%;object-fit:cover;display:block}
+  .photoslot.present{flex-direction:column;gap:10px;color:var(--text);font-weight:600;font-size:15px;
+    text-decoration:none;transition:.2s;
+    background:radial-gradient(600px 200px at 50% 0%,rgba(91,140,255,.22),transparent),#101a36}
+  .photoslot.present:hover{background:radial-gradient(600px 200px at 50% 0%,rgba(91,140,255,.35),transparent),#101a36}
+  .photoslot .play{width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;
+    box-shadow:0 8px 24px rgba(91,140,255,.5)}
+
+  /* EDUCATION / TWO-COL */
+  .two{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:26px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .block{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .block h3{font-size:18px;margin-bottom:4px}
+  .block .muted{color:var(--muted);font-size:14px}
+  .softlist{list-style:none;margin-top:8px}
+  .softlist li{padding:10px 0;border-bottom:1px solid rgba(38,50,92,.5);color:#c7cff0;font-size:15px;display:flex;gap:10px}
+  .softlist li:last-child{border-bottom:none}
+  .softlist li::before{content:"✓";color:var(--accent2);font-weight:700}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact .btn{margin-top:6px}
+  .contactrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  footer{padding:36px 0 60px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+  .fade{opacity:0;transform:translateY(18px);transition:.6s ease}
+  .fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body data-lang="en">
+
+<nav>
+  <div class="wrap navin">
+    <div class="brand">Phakin<span>.</span>dev</div>
+    <div class="navlinks">
+      <a href="#about"><span class="en">About</span><span class="th">เกี่ยวกับ</span></a>
+      <a href="#skills"><span class="en">Skills</span><span class="th">ทักษะ</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="th">ผลงาน</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="th">ติดต่อ</span></a>
+      <button class="toggle" id="langBtn" onclick="toggleLang()">
+        🌐 <span class="en">ไทย</span><span class="th">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">&lt; IT &amp; Software Developer /&gt;</div>
+    <h1>Phakin Saekhow</h1>
+    <div class="sub">
+      <span class="en">Computer Engineering · System Design · Data</span>
+      <span class="th">วิศวกรรมคอมพิวเตอร์ · ออกแบบระบบ · ข้อมูล</span>
+    </div>
+    <p class="lead">
+      <span class="en">Motivated IT professional with a strong foundation in computer engineering. I build solutions that improve system and application performance — applying programming and system-management skills to solve real technical problems. Focused on system design, data management, and IT support to create stable, user-centered environments.</span>
+      <span class="th">บุคลากรสายไอทีที่มีความมุ่งมั่นและมีพื้นฐานที่ดีด้านวิศวกรรมคอมพิวเตอร์ มุ่งเน้นการส่งมอบโซลูชันที่ช่วยเพิ่มประสิทธิภาพของระบบและแอปพลิเคชัน โดยนำทักษะด้านการเขียนโปรแกรมและการจัดการระบบมาใช้แก้ปัญหาทางเทคนิค ปัจจุบันมุ่งเน้นการออกแบบระบบ การจัดการข้อมูล และการสนับสนุนด้านไอที เพื่อสร้างสภาพแวดล้อมการทำงานที่เสถียรและตอบโจทย์ผู้ใช้งาน</span>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#projects"><span class="en">View my work</span><span class="th">ดูผลงาน</span> →</a>
+      <a class="btn ghost" id="ghBtn" href="https://github.com/Phakin0384" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn ghost" href="mailto:phakinsaekhow04@gmail.com"><span class="en">Email me</span><span class="th">ส่งอีเมล</span></a>
+      <a class="btn ghost" href="Phakin_Saekhow_Portfolio.pdf" download>⬇ <span class="en">Download CV</span><span class="th">ดาวน์โหลด CV</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="fade">
+  <div class="wrap">
+    <div class="eyebrow">01 · <span class="en">About</span><span class="th">เกี่ยวกับ</span></div>
+    <h2><span class="en">Who I am</span><span class="th">เกี่ยวกับผม</span></h2>
+    <div class="two">
+      <div class="block">
+        <p class="lead2">
+          <span class="en">I'm a final-year Computer Engineering &amp; Information Science student at Kasetsart University, Sriracha Campus. I enjoy turning messy processes into clean, working systems — whether that's a full-stack web app, a data pipeline, or a low-code tool that saves a team hours of manual work.</span>
+          <span class="th">ผมเป็นนักศึกษาชั้นปีสุดท้าย สาขาวิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา ผมชอบเปลี่ยนกระบวนการที่ยุ่งยากให้กลายเป็นระบบที่ใช้งานได้จริง ไม่ว่าจะเป็นเว็บแอปแบบ full-stack, data pipeline หรือเครื่องมือ low-code ที่ช่วยลดงานซ้ำซ้อนของทีมได้เป็นชั่วโมง</span>
+        </p>
+      </div>
+      <div class="block">
+        <h3><span class="en">Languages</span><span class="th">ภาษา</span></h3>
+        <ul class="softlist">
+          <li><span class="en">Thai — Native</span><span class="th">ไทย — เจ้าของภาษา</span></li>
+          <li><span class="en">English — Conversational</span><span class="th">อังกฤษ — สนทนาได้</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="fade">
+  <div class="wrap">
+    <div class="eyebrow">02 · <span class="en">Skills</span><span class="th">ทักษะ</span></div>
+    <h2><span class="en">Technical toolkit</span><span class="th">ทักษะทางเทคนิค</span></h2>
+    <div class="grid skills">
+      <div class="scard">
+        <h3><span class="dot"></span><span class="en">Programming</span><span class="th">ภาษาโปรแกรม</span></h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">C / C++</span><span class="chip">JavaScript</span><span class="chip">Java</span></div>
+      </div>
+      <div class="scard">
+        <h3><span class="dot"></span><span class="en">Web &amp; Tools</span><span class="th">เว็บและเครื่องมือ</span></h3>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">HTML/CSS</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Figma</span></div>
+      </div>
+      <div class="scard">
+        <h3><span class="dot"></span><span class="en">Data &amp; Low-Code</span><span class="th">ข้อมูลและ Low-Code</span></h3>
+        <div class="chips"><span class="chip">Dataiku</span><span class="chip">Power Apps</span><span class="chip">Data Pipeline</span></div>
+      </div>
+      <div class="scard">
+        <h3><span class="dot"></span><span class="en">Strengths</span><span class="th">จุดแข็ง</span></h3>
+        <div class="chips">
+          <span class="chip en">Time management</span><span class="chip th">บริหารเวลา</span>
+          <span class="chip en">Clear communication</span><span class="chip th">สื่อสารชัดเจน</span>
+          <span class="chip en">Open to feedback</span><span class="chip th">เปิดรับความเห็น</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="fade">
+  <div class="wrap">
+    <div class="eyebrow">03 · <span class="en">Projects &amp; Experience</span><span class="th">ผลงานและประสบการณ์</span></div>
+    <h2><span class="en">Selected work</span><span class="th">ผลงานที่คัดสรร</span></h2>
+    <div class="proj">
+
+      <div class="pcard">
+        <div class="body">
+          <div class="tag">SOFTWARE ENGINEERING PROJECT · FEB–MAR 2025</div>
+          <h3>Beplan <span class="en">— AI Scheduling App</span><span class="th">— แอปจัดตารางด้วย AI</span></h3>
+          <div class="meta"><span class="en">University capstone project</span><span class="th">โปรเจกต์วิชาวิศวกรรมซอฟต์แวร์</span></div>
+          <p>
+            <span class="en">An intelligent scheduling application that blends AI to help users brainstorm, structure, and refine their daily plans more effectively.</span>
+            <span class="th">แอปพลิเคชันจัดตารางเวลาอัจฉริยะที่ผสานความสามารถของ AI เพื่อช่วยผู้ใช้ระดมความคิด วางโครงสร้าง และปรับปรุงแผนงานประจำวันได้อย่างมีประสิทธิภาพ</span>
+          </p>
+          <ul>
+            <li><span class="en">Designed a friendly, intuitive UI linking user input to AI-generated recommendations seamlessly.</span><span class="th">ออกแบบ UI ที่เป็นมิตรและเข้าใจง่าย เชื่อมข้อมูลของผู้ใช้เข้ากับคำแนะนำจาก AI ได้อย่างราบรื่น</span></li>
+            <li><span class="en">Improved users' time management and personal productivity through smart planning.</span><span class="th">ยกระดับการบริหารจัดการเวลาและประสิทธิผลส่วนบุคคลผ่านการวางแผนอัจฉริยะ</span></li>
+          </ul>
+          <div class="stack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MySQL</span><span class="chip">AI Integration</span><span class="chip">Figma</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <a class="photoslot present" id="michelinPhoto" href="https://canva.link/gjse68ok566mk7w" target="_blank" rel="noopener">
+          <span class="play">▶</span>
+          <span class="en">View project presentation (Canva)</span>
+          <span class="th">ดูสไลด์นำเสนอโปรเจกต์ (Canva)</span>
+        </a>
+        <div class="body">
+          <div class="tag">INTERNSHIP · SIAM MICHELIN (LMC SITE) · DEC 2025–MAR 2026</div>
+          <h3><span class="en">Quality Obtention (QO) Intern</span><span class="th">นักศึกษาฝึกงาน ตำแหน่ง QO</span></h3>
+          <div class="meta"><span class="en">Data engineering &amp; process digitization</span><span class="th">วิศวกรรมข้อมูลและการทำงานสู่ระบบดิจิทัล</span></div>
+          <ul>
+            <li><span class="en">Built a Dataiku data pipeline integrating multiple production systems, cutting redundant analysis steps and helping QO staff trace root causes of substandard tires faster and more accurately.</span><span class="th">สร้าง Data Pipeline ด้วย Dataiku บูรณาการข้อมูลจากหลายระบบเข้าด้วยกัน ลดขั้นตอนที่ซ้ำซ้อน และช่วยให้เจ้าหน้าที่ QO สืบหาสาเหตุหลักของยางที่ไม่ได้มาตรฐานได้เร็วและแม่นยำยิ่งขึ้น</span></li>
+            <li><span class="en">Developed Power Apps solutions to digitize paper-based document processes across FIS, QO, and DMTC departments into a clear digital dashboard.</span><span class="th">พัฒนาแอปพลิเคชันด้วย Power Apps เปลี่ยนกระบวนการเอกสารกระดาษข้ามแผนก FIS, QO และ DMTC ให้เป็นแพลตฟอร์มดิจิทัลที่แสดงข้อมูลภาพรวมได้ชัดเจน</span></li>
+            <li><span class="en">Improved cross-department workflow efficiency through better data management.</span><span class="th">เพิ่มประสิทธิภาพการทำงานข้ามแผนกด้วยการจัดการข้อมูลที่ดีขึ้น</span></li>
+          </ul>
+          <div class="stack"><span class="chip">Dataiku</span><span class="chip">Power Apps</span><span class="chip">Data Pipeline</span><span class="chip">Dashboards</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education" class="fade">
+  <div class="wrap">
+    <div class="eyebrow">04 · <span class="en">Education</span><span class="th">การศึกษา</span></div>
+    <h2><span class="en">Education</span><span class="th">การศึกษา</span></h2>
+    <div class="two">
+      <div class="block">
+        <h3><span class="en">B.Eng. Computer Engineering &amp; Information Science</span><span class="th">วิศวกรรมศาสตรบัณฑิต · วิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์</span></h3>
+        <p class="muted"><span class="en">Kasetsart University, Sriracha Campus · 2022–2026 · GPA 2.98</span><span class="th">มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา · พ.ศ. 2565–2569 · GPA 2.98</span></p>
+      </div>
+      <div class="block">
+        <h3><span class="en">Soft skills</span><span class="th">ทักษะเชิงบุคคล</span></h3>
+        <ul class="softlist">
+          <li><span class="en">Effective time management &amp; prioritization</span><span class="th">บริหารเวลาและจัดลำดับความสำคัญได้ดี</span></li>
+          <li><span class="en">Clear, direct communication</span><span class="th">สื่อสารชัดเจนและตรงไปตรงมา</span></li>
+          <li><span class="en">Open to feedback from colleagues</span><span class="th">เปิดรับฟังความเห็นจากเพื่อนร่วมงาน</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <div class="wrap contact">
+    <div class="eyebrow">05 · <span class="en">Contact</span><span class="th">ติดต่อ</span></div>
+    <h2><span class="en">Let's build something</span><span class="th">มาสร้างอะไรดี ๆ กัน</span></h2>
+    <p class="lead2" style="margin:0 auto"><span class="en">Open to IT &amp; developer roles. Feel free to reach out.</span><span class="th">เปิดรับโอกาสในสายงานไอทีและนักพัฒนา ยินดีพูดคุยครับ</span></p>
+    <div class="contactrow">
+      <a class="btn primary" href="mailto:phakinsaekhow04@gmail.com">✉ phakinsaekhow04@gmail.com</a>
+      <a class="btn ghost" href="tel:+66935759812">📞 +66 093-575-9812</a>
+      <a class="btn ghost" id="ghBtn2" href="https://github.com/Phakin0384" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Phakin Saekhow · <span class="en">Built as an interactive portfolio</span><span class="th">พอร์ตโฟลิโอแบบอินเทอร์แอกทีฟ</span></div>
+</footer>
+
+<script>
+  function toggleLang(){
+    const b=document.body;
+    const next=b.getAttribute('data-lang')==='en'?'th':'en';
+    b.setAttribute('data-lang',next);
+    document.documentElement.lang=next;
+  }
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  // scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
