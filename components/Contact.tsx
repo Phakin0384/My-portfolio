@@ -5,6 +5,7 @@ import { contact } from "@/data/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 
 export function Contact() {
   const { lang } = useLanguage();
@@ -14,9 +15,7 @@ export function Contact() {
         <SectionHeading num={contact.eyebrowNum} eyebrow={contact.eyebrow} heading={contact.heading} />
         <p className="text-muted max-w-[680px] mx-auto">{contact.lead[lang]}</p>
         <div className="flex gap-3.5 justify-center flex-wrap mt-6">
-          <Button variant="primary" href={`mailto:${contact.email}`}>
-            ✉ {contact.email}
-          </Button>
+          <CopyEmailButton />
           <Button href={contact.phoneHref}>📞 {contact.phone}</Button>
           <Button href={contact.github} target="_blank" rel="noopener">
             GitHub ↗

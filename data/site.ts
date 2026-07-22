@@ -79,6 +79,7 @@ export const contact = {
     th: "เปิดรับโอกาสในสายงานไอทีและนักพัฒนา ยินดีพูดคุยครับ",
   } as Bilingual,
   email: "phakinsaekhow04@gmail.com",
+  copied: { en: "Copied!", th: "คัดลอกแล้ว!" } as Bilingual,
   phone: "+66 093-575-9812",
   phoneHref: "tel:+66935759812",
   github: "https://github.com/Phakin0384",
