@@ -18,6 +18,14 @@ export const hero = {
     en: "Computer Engineering · System Design · Data",
     th: "วิศวกรรมคอมพิวเตอร์ · ออกแบบระบบ · ข้อมูล",
   } as Bilingual,
+  // Roles cycled by the animated hero rotator. Add, remove, or reorder freely —
+  // keep each one accurate to what you can actually do.
+  roles: [
+    { en: "IT & Software Developer", th: "นักพัฒนาไอทีและซอฟต์แวร์" },
+    { en: "Full-Stack Web Developer", th: "นักพัฒนาเว็บแบบ Full-Stack" },
+    { en: "Data Pipeline Engineer", th: "วิศวกร Data Pipeline" },
+    { en: "System & Process Designer", th: "นักออกแบบระบบและกระบวนการ" },
+  ] as Bilingual[],
   lead: {
     en: "Motivated IT professional with a strong foundation in computer engineering. I build solutions that improve system and application performance — applying programming and system-management skills to solve real technical problems. Focused on system design, data management, and IT support to create stable, user-centered environments.",
     th: "บุคลากรสายไอทีที่มีความมุ่งมั่นและมีพื้นฐานที่ดีด้านวิศวกรรมคอมพิวเตอร์ มุ่งเน้นการส่งมอบโซลูชันที่ช่วยเพิ่มประสิทธิภาพของระบบและแอปพลิเคชัน โดยนำทักษะด้านการเขียนโปรแกรมและการจัดการระบบมาใช้แก้ปัญหาทางเทคนิค ปัจจุบันมุ่งเน้นการออกแบบระบบ การจัดการข้อมูล และการสนับสนุนด้านไอที เพื่อสร้างสภาพแวดล้อมการทำงานที่เสถียรและตอบโจทย์ผู้ใช้งาน",

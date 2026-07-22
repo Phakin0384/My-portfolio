@@ -53,3 +53,53 @@ body {
   background: var(--color-line);
   border-radius: 3px;
 }
+
+/* --- Living hero background (drifting aurora blobs) --- */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-aurora span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.55;
+  will-change: transform;
+}
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6%, 9%) scale(1.15); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-8%, -6%) scale(0.95); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, -8%) scale(1.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora span { animation: none !important; }
+}
+
+/* --- Spotlight cards (cursor-following glow) --- */
+.spotlight-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    480px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(91, 140, 255, 0.18),
+    transparent 65%
+  );
+}
+.spotlight-card:hover .spotlight-glow {
+  opacity: 1;
+}

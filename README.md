@@ -19,6 +19,40 @@ npm install
 npm run dev
 ```
 
+## Adding a new project
+
+All projects live in one file: **`data/projects.ts`**. To add a new one, copy this
+template into the `projects` array (order in the array = order on the page) — no
+component changes needed:
+
+```ts
+{
+  tag: "INTERNSHIP · COMPANY · MONTH YEAR",        // small mono label above the title
+  name: "Project Name",                             // leave "" if you only want the suffix
+  nameSuffix: { en: "— short tagline", th: "— คำอธิบายสั้น" },
+  meta: { en: "one-line context", th: "บริบทหนึ่งบรรทัด" },
+  description: { en: "Optional paragraph.", th: "ย่อหน้า (ไม่บังคับ)" }, // optional
+  bullets: [
+    { en: "What you did and the impact.", th: "สิ่งที่ทำและผลลัพธ์" },
+    { en: "Another achievement.", th: "อีกหนึ่งผลงาน" },
+  ],
+  stack: [
+    { label: "React", icon: "react" },   // icon must be a key from lib/types.ts (IconKey)
+  ],
+  presentation: {                          // optional: adds the ▶ banner + link
+    href: "https://...",
+    label: { en: "View presentation", th: "ดูสไลด์นำเสนอ" },
+  },
+},
+```
+
+- Every user-facing string is `{ en, th }` so the language toggle keeps working.
+- `icon` values must be one of the keys in `lib/types.ts` (`IconKey`). To add a brand
+  new tech icon, add its key there, then map it in `components/ui/IconChip.tsx`
+  (and a hex color in `components/icons/brandColors.ts` for Simple Icons brands).
+- Hero roles that cycle in the animation are in `data/site.ts` under `hero.roles` —
+  edit that list to change what titles rotate under your name.
+
 ## Deploy
 
 Deployed on Vercel from `main` (auto-detected Next.js project, zero config): `https://my-portfolio-sepia-one-46.vercel.app/`

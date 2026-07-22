@@ -82,13 +82,5 @@ export const projects: Project[] = [
       href: "https://canva.link/gjse68ok566mk7w",
       label: { en: "View project presentation (Canva)", th: "ดูสไลด์นำเสนอโปรเจกต์ (Canva)" },
     },
-    gallery: [
-      { src: "/images/pipelines/cq.jpg", alt: "CQ data pipeline" },
-      { src: "/images/pipelines/fyt-cx-all.jpg", alt: "FYT_CX_All data pipeline" },
-      { src: "/images/pipelines/fyt-cx-f.jpg", alt: "FYT_CX_F data pipeline" },
-      { src: "/images/pipelines/fyt-cx-c.jpg", alt: "FYT_CX_C data pipeline" },
-      { src: "/images/pipelines/database-pdo.jpg", alt: "Database_PDO data pipeline" },
-      { src: "/images/pipelines/database-fyt.jpg", alt: "Database_FYT data pipeline" },
-    ],
   },
 ];

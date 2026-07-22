@@ -5,7 +5,7 @@ import { projects, projectsSection } from "@/data/projects";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconChip } from "@/components/ui/IconChip";
-import { Gallery } from "@/components/Gallery";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 export function Projects() {
   const { lang } = useLanguage();
@@ -15,7 +15,7 @@ export function Projects() {
         <SectionHeading num={projectsSection.eyebrowNum} eyebrow={projectsSection.eyebrow} heading={projectsSection.heading} />
         <div className="grid gap-[22px] mt-6">
           {projects.map((project) => (
-            <div
+            <SpotlightCard
               key={project.tag}
               className="rounded-[18px] overflow-hidden border border-line shadow-card bg-gradient-to-b from-card2 to-card"
             >
@@ -57,9 +57,8 @@ export function Projects() {
                     <IconChip key={i} icon={chip.icon} label={chip.label} />
                   ))}
                 </div>
-                {project.gallery && <Gallery images={project.gallery} />}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
