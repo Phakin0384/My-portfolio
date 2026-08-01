@@ -26,7 +26,8 @@ export function SpotlightCard({
       className={`spotlight-card relative transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-accent/60 ${className}`}
     >
       <div className="spotlight-glow" aria-hidden />
-      <div className="relative z-10">{children}</div>
+      {/* h-full + column flow so cards in a bento row can stretch to match */}
+      <div className="relative z-10 flex flex-col h-full">{children}</div>
     </div>
   );
 }

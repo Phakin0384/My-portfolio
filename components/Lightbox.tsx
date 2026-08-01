@@ -3,9 +3,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 import type { GalleryImage } from "@/data/projects";
 
 export function Lightbox({ image, onClose }: { image: GalleryImage | null; onClose: () => void }) {
+  const { lang } = useLanguage();
+
   useEffect(() => {
     if (!image) return;
     const onKey = (e: KeyboardEvent) => {
@@ -35,9 +38,9 @@ export function Lightbox({ image, onClose }: { image: GalleryImage | null; onClo
           >
             <Image
               src={image.src}
-              alt={image.alt}
-              width={1400}
-              height={900}
+              alt={image.alt[lang]}
+              width={image.width ?? 1400}
+              height={image.height ?? 900}
               className="max-w-full max-h-[85vh] w-auto h-auto object-contain"
               sizes="90vw"
             />

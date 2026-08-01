@@ -5,6 +5,11 @@ import {
   SiJavascript,
   SiOpenjdk,
   SiReact,
+  SiExpo,
+  SiTypescript,
+  SiJest,
+  SiFlask,
+  SiMongodb,
   SiNodedotjs,
   SiHtml5,
   SiCss,
@@ -28,6 +33,11 @@ const brandIcon: Partial<Record<IconKey, typeof SiPython>> = {
   javascript: SiJavascript,
   java: SiOpenjdk,
   react: SiReact,
+  expo: SiExpo,
+  typescript: SiTypescript,
+  jest: SiJest,
+  flask: SiFlask,
+  mongodb: SiMongodb,
   nodejs: SiNodedotjs,
   html5: SiHtml5,
   css: SiCss,
@@ -38,19 +48,22 @@ const brandIcon: Partial<Record<IconKey, typeof SiPython>> = {
   dataiku: SiDataiku,
 };
 
-function ChipIcon({ icon }: { icon: IconKey }) {
+/** Exported so /skills can render the same icons larger than a chip does. */
+export function ChipIcon({ icon, size = 15 }: { icon: IconKey; size?: number }) {
   const Brand = brandIcon[icon];
-  if (Brand) return <Brand size={15} color={brandColor[icon]} className="shrink-0" />;
+  if (Brand) return <Brand size={size} color={brandColor[icon]} className="shrink-0" />;
 
+  // Custom icons render in currentColor so they stay legible in both themes.
+  const box = { width: size, height: size };
   switch (icon) {
     case "powerapps":
-      return <PowerAppsIcon className="w-[15px] h-[15px] shrink-0" />;
+      return <PowerAppsIcon style={box} className="shrink-0 text-brand-purple" />;
     case "datapipeline":
-      return <DataPipelineIcon className="w-[15px] h-[15px] shrink-0" />;
+      return <DataPipelineIcon style={box} className="shrink-0 text-accent2" />;
     case "dashboards":
-      return <DashboardsIcon className="w-[15px] h-[15px] shrink-0" />;
+      return <DashboardsIcon style={box} className="shrink-0 text-accent" />;
     case "aiintegration":
-      return <AiIntegrationIcon className="w-[15px] h-[15px] shrink-0" />;
+      return <AiIntegrationIcon style={box} className="shrink-0 text-accent" />;
     default:
       return null;
   }

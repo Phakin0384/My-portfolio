@@ -1,42 +1,112 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg: #0b1020;
-  --color-bg2: #0f1730;
-  --color-card: #141d3a;
-  --color-card2: #182446;
-  --color-line: #26325c;
-  --color-text: #e6ebff;
-  --color-muted: #9aa6cf;
-  --color-accent: #5b8cff;
-  --color-accent2: #3ad6c0;
-  --color-chip: #1b2750;
+/* Class-based dark mode: <html> carries `.dark`, set by ThemeProvider. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Palette — "Technical Precision Light". Light is the source design;
+   dark is derived from the same system's inverse/fixed-dim roles.
+   These are raw CSS vars — the @theme inline block below turns them
+   into Tailwind utilities that stay reactive when the class flips.
+   Source token names are noted so a value can be traced back.
+   --------------------------------------------------------------- */
+:root {
+  --c-bg: #f7f9fb; /* background / surface */
+  --c-bg2: #f2f4f6; /* surface-container-low */
+  --c-card: #ffffff; /* surface-container-lowest */
+  --c-card2: #ffffff; /* flat — this system's cards don't gradient */
+  --c-line: #dfe0e5; /* outline-variant, softened toward the ground */
+  --c-text: #191c1e; /* on-surface */
+  --c-body: #45464d; /* on-surface-variant */
+  --c-muted: #5b5c63; /* outline, darkened to clear 4.5:1 on #f7f9fb */
+  --c-accent: #0058be; /* secondary */
+  --c-accent-soft: #2170e4; /* secondary-container */
+  --c-accent2: #0058be; /* one blue — see DESIGN.md §2 */
+  --c-on-accent: #ffffff; /* on-secondary */
+  --c-chip: #f2f4f6; /* surface-container-low */
+  --c-brand-purple: #8b2fa8;
+
+  --shadow-card-v: 0 1px 2px rgba(25, 28, 30, 0.04), 0 8px 24px -10px rgba(25, 28, 30, 0.1);
+  --grid-line: rgba(198, 198, 205, 0.38);
+  --spot-glow: rgba(0, 88, 190, 0.08);
+  --aurora-opacity: 0;
+}
+
+.dark {
+  --c-bg: #191c1e; /* on-surface, used as ground */
+  --c-bg2: #202325;
+  --c-card: #2d3133; /* inverse-surface */
+  --c-card2: #2d3133;
+  --c-line: #43474a;
+  --c-text: #eff1f3; /* inverse-on-surface */
+  --c-body: #d3d6d8;
+  --c-muted: #b2b4ba;
+  --c-accent: #adc6ff; /* secondary-fixed-dim */
+  --c-accent-soft: #d8e2ff; /* secondary-fixed */
+  --c-accent2: #adc6ff;
+  --c-on-accent: #001a42; /* on-secondary-fixed */
+  --c-chip: #131b2e; /* primary-container */
+  --c-brand-purple: #c05fd6;
+
+  --shadow-card-v: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  --grid-line: rgba(198, 198, 205, 0.07);
+  --spot-glow: rgba(173, 198, 255, 0.12);
+  --aurora-opacity: 1;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-bg2: var(--c-bg2);
+  --color-card: var(--c-card);
+  --color-card2: var(--c-card2);
+  --color-line: var(--c-line);
+  --color-text: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-body: var(--c-body);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-accent2: var(--c-accent2);
+  --color-on-accent: var(--c-on-accent);
+  --color-chip: var(--c-chip);
+  --color-brand-purple: var(--c-brand-purple);
 
   --font-sans: var(--font-inter), var(--font-noto-thai), system-ui, sans-serif;
   --font-thai: var(--font-noto-thai), var(--font-inter), sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
 
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-card: var(--shadow-card-v);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Blueprint grid in both themes; the coloured wash only in dark. */
 body {
-  background:
-    radial-gradient(1200px 600px at 80% -10%, #1a2a5e 0%, transparent 60%),
-    radial-gradient(900px 500px at -10% 20%, #123a44 0%, transparent 55%),
-    var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--c-bg);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--c-text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(1200px 600px at 80% -10%, #131b2e 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, #0b1c30 0%, transparent 55%);
+  background-size: 24px 24px, 24px 24px, cover, cover;
 }
 
 .chip {
-  background: var(--color-chip);
-  border: 1px solid var(--color-line);
-  color: var(--color-text);
+  background: var(--c-chip);
+  border: 1px solid var(--c-line);
+  color: var(--c-text);
   border-radius: 8px;
   padding: 6px 11px 6px 8px;
   font-size: 13px;
@@ -50,17 +120,19 @@ body {
   height: 6px;
 }
 .gallery::-webkit-scrollbar-thumb {
-  background: var(--color-line);
+  background: var(--c-line);
   border-radius: 3px;
 }
 
-/* --- Living hero background (drifting aurora blobs) --- */
+/* --- Living hero background (drifting aurora blobs) — dark only --- */
 .hero-aurora {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  opacity: var(--aurora-opacity);
+  transition: opacity 0.3s ease;
 }
 .hero-aurora span {
   position: absolute;
@@ -96,10 +168,19 @@ body {
   transition: opacity 0.35s ease;
   background: radial-gradient(
     480px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(91, 140, 255, 0.18),
+    var(--spot-glow),
     transparent 65%
   );
 }
 .spotlight-card:hover .spotlight-glow {
   opacity: 1;
+}
+
+/* --- Project card cover: CSS blueprint plate, no image needed --- */
+.pcover {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
+    radial-gradient(420px 150px at 50% 0%, var(--spot-glow), transparent 70%);
+  background-size: 16px 16px, 16px 16px, cover;
 }
