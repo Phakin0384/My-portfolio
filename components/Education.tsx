@@ -1,8 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { educationSection, experienceSection } from "@/data/site";
+import { activities, experienceSection } from "@/data/site";
+import type { GalleryImage } from "@/data/projects";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ProjectSlideshow } from "@/components/ProjectSlideshow";
+import { Lightbox } from "@/components/Lightbox";
 
 const card =
   "rounded-[18px] border border-line bg-gradient-to-b from-card2 to-card shadow-card p-6 md:p-[26px]";
@@ -27,35 +32,67 @@ function CardHead({ icon, children }: { icon: React.ReactNode; children: React.R
   );
 }
 
+/** One activity's thumbnail + caption — click opens the full certificate in the Lightbox. */
+function ActivityCard({
+  item,
+  onOpen,
+}: {
+  item: (typeof activities.items)[number];
+  onOpen: (image: GalleryImage) => void;
+}) {
+  const { lang } = useLanguage();
+  return (
+    <li>
+      <button
+        type="button"
+        onClick={() => onOpen(item.image)}
+        aria-label={item.image.alt[lang]}
+        className="group block w-full text-left"
+      >
+        <div className="relative aspect-[16/10] rounded-[14px] border border-line bg-chip overflow-hidden cursor-zoom-in flex items-center justify-center transition-colors duration-200 group-hover:border-accent">
+          <Image
+            src={item.image.src}
+            alt={item.image.alt[lang]}
+            fill
+            sizes="(max-width:768px) 90vw, 45vw"
+            className="object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+        </div>
+        <h4 className="text-[14.5px] font-bold mt-3">{item.name[lang]}</h4>
+        <p className="font-mono text-accent2 text-[11px] tracking-[0.07em] uppercase mt-1">
+          {item.detail[lang]}
+        </p>
+      </button>
+    </li>
+  );
+}
+
 /**
- * The Education / Experience row on /about — 6 and 6. Education is a timeline
- * (a ruled left edge with a marker per entry); experience is a stack of cards.
+ * The Activities / Experience row on /about — 6 and 6. Activities is a grid of
+ * certificate thumbnails; experience is a stack of cards.
  */
 export function Education() {
   const { lang } = useLanguage();
+  const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   return (
     <FadeIn id="education" className="py-8">
       <div className="max-w-[1040px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-[22px] items-stretch">
         <div className={`md:col-span-6 ${card}`}>
-          <CardHead icon={<path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />}>
-            {educationSection.heading[lang]}
+          <CardHead
+            icon={
+              <>
+                <circle cx="12" cy="8" r="6" />
+                <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
+              </>
+            }
+          >
+            {activities.heading[lang]}
           </CardHead>
-          <div className="relative border-l border-line ml-1.5 grid gap-6">
-            {educationSection.items.map((item, i) => (
-              <div key={i} className="relative pl-6">
-                <span
-                  className={`absolute -left-[6.5px] top-[7px] w-3 h-3 rounded-full bg-card border-2 ${
-                    item.past ? "border-line" : "border-accent"
-                  }`}
-                />
-                <h3 className="text-[17px] font-bold">{item.school[lang]}</h3>
-                <div className="font-mono text-accent2 text-[12px] tracking-[0.07em] uppercase mt-1 mb-1.5">
-                  {item.credential[lang]}
-                </div>
-                <p className="text-muted text-[14.5px]">{item.detail[lang]}</p>
-              </div>
+          <ul className="grid sm:grid-cols-2 gap-5">
+            {activities.items.map((item, i) => (
+              <ActivityCard key={i} item={item} onOpen={setActiveImage} />
             ))}
-          </div>
+          </ul>
         </div>
 
         <div className={`md:col-span-6 ${card}`}>
@@ -86,11 +123,20 @@ export function Education() {
                 <p className="text-body text-[14.5px] mt-3.5 pt-3.5 border-t border-line">
                   {item.summary[lang]}
                 </p>
+                {item.gallery && item.galleryLabel && (
+                  <ProjectSlideshow
+                    images={item.gallery}
+                    href="/about/certificates"
+                    label={item.galleryLabel}
+                    aspect={item.galleryAspect}
+                  />
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
+      <Lightbox image={activeImage} onClose={() => setActiveImage(null)} />
     </FadeIn>
   );
 }

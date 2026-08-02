@@ -40,6 +40,13 @@ export const pageHeaders = {
       th: "ภาพรวมทั้งหมดของเครื่องมือที่ใช้ ทั้งภาษาโปรแกรม เครื่องมือด้านเว็บและข้อมูล รวมถึงทักษะการทำงานที่มาคู่กัน",
     } as Bilingual,
   },
+  certificates: {
+    title: { en: "Certificates.", th: "ใบรับรอง" } as Bilingual,
+    lead: {
+      en: "Certificates from the Siam Michelin (Laem Chabang) internship.",
+      th: "ใบรับรองจากการฝึกงานที่บริษัทสยามมิชลิน (แหลมฉบัง)",
+    } as Bilingual,
+  },
 };
 
 /** Label on the link from a home-page preview to its full page. */
@@ -126,6 +133,40 @@ export const coreFocus = {
   ],
 };
 
+/** Sits beside the profile card on /about, in Core focus's old 4-of-12 slot. */
+export const activities = {
+  heading: { en: "Activities", th: "กิจกรรม" } as Bilingual,
+  // Oldest first.
+  items: [
+    {
+      name: { en: "Responsive Web Design", th: "Responsive Web Design" } as Bilingual,
+      detail: { en: "freeCodeCamp certification · Oct 2024", th: "ใบรับรองจาก freeCodeCamp · ต.ค. 2567" } as Bilingual,
+      image: {
+        src: "/images/certificate/freecodecamp-responsive-web-design.png",
+        alt: {
+          en: "freeCodeCamp Responsive Web Design developer certification",
+          th: "ใบรับรอง Responsive Web Design จาก freeCodeCamp",
+        } as Bilingual,
+        width: 1229,
+        height: 829,
+      },
+    },
+    {
+      name: { en: "Cyber Geek Club Sriracha", th: "ชมรม Cyber Geek Club ศรีราชา" } as Bilingual,
+      detail: { en: "Code Battle Contest · Mar 2025", th: "การแข่งขัน Code Battle · มี.ค. 2568" } as Bilingual,
+      image: {
+        src: "/images/certificate/cyber-code-battle.png",
+        alt: {
+          en: "Certificate of participation, Code Battle Contest, Cyber Geek Club Sriracha",
+          th: "ใบประกาศเกียรติคุณ การแข่งขัน Code Battle ชมรม Cyber Geek Club ศรีราชา",
+        } as Bilingual,
+        width: 2000,
+        height: 1414,
+      },
+    },
+  ],
+};
+
 export const educationSection = {
   eyebrow: { en: "Education", th: "การศึกษา" } as Bilingual,
   heading: { en: "Education", th: "การศึกษา" } as Bilingual,
@@ -168,6 +209,28 @@ export const experienceSection = {
         en: "Built a Dataiku pipeline joining several production systems so QO staff could trace the root cause of substandard tires faster, and moved paper document processes across three departments into Power Apps.",
         th: "สร้าง Data Pipeline ด้วย Dataiku เชื่อมข้อมูลจากหลายระบบการผลิต ช่วยให้เจ้าหน้าที่ QO สืบหาสาเหตุของยางที่ไม่ได้มาตรฐานได้เร็วขึ้น และเปลี่ยนกระบวนการเอกสารกระดาษของสามแผนกมาอยู่บน Power Apps",
       } as Bilingual,
+      galleryLabel: { en: "Michelin certificates", th: "ใบรับรองจาก Michelin" } as Bilingual,
+      galleryAspect: "landscape" as const,
+      gallery: [
+        {
+          src: "/images/certificate/completion-letter.jpg",
+          alt: {
+            en: "Michelin internship completion letter",
+            th: "หนังสือรับรองการฝึกงาน บริษัทสยามมิชลิน",
+          } as Bilingual,
+          width: 1402,
+          height: 2047,
+        },
+        {
+          src: "/images/certificate/honor-certificate.jpg",
+          alt: {
+            en: "Michelin internship honor certificate",
+            th: "เกียรติบัตรการฝึกงาน บริษัทสยามมิชลิน",
+          } as Bilingual,
+          width: 2048,
+          height: 1556,
+        },
+      ],
     },
   ],
 };
