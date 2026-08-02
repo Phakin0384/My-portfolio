@@ -68,7 +68,7 @@ export const hero = {
   spec: [
     { label: { en: "degree", th: "วุฒิ" }, value: { en: "B.Eng. CPE & Informatics", th: "วศ.บ. วิศวกรรมคอมพิวเตอร์" } },
     { label: { en: "university", th: "สถาบัน" }, value: { en: "Kasetsart · Sriracha", th: "เกษตรศาสตร์ · ศรีราชา" } },
-    { label: { en: "graduated", th: "จบการศึกษา" }, value: { en: "2026", th: "2569" } },
+    { label: { en: "graduated", th: "จบการศึกษา" }, value: { en: "2025", th: "2568" } },
     { label: { en: "focus", th: "ความถนัด" }, value: { en: "Systems · Data · IT", th: "ระบบ · ข้อมูล · ไอที" } },
     { label: { en: "languages", th: "ภาษา" }, value: { en: "TH native · EN conv.", th: "ไทย · อังกฤษ" } },
   ] as { label: Bilingual; value: Bilingual }[],
@@ -119,7 +119,7 @@ export const about = {
   // Small metadata chips beside the name on the /about profile card.
   facts: [
     { icon: "pin" as const, label: { en: "Thailand", th: "ประเทศไทย" } as Bilingual },
-    { icon: "cap" as const, label: { en: "B.Eng. 2026", th: "วศ.บ. 2569" } as Bilingual },
+    { icon: "cap" as const, label: { en: "B.Eng. 2025", th: "วศ.บ. 2568" } as Bilingual },
   ],
 };
 
@@ -178,14 +178,44 @@ export const educationSection = {
         th: "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา",
       } as Bilingual,
       credential: {
-        en: "Bachelor's Degree · 2022–2026",
-        th: "ปริญญาตรี · พ.ศ. 2565–2569",
+        en: "Bachelor's Degree · 2022–2025",
+        th: "ปริญญาตรี · พ.ศ. 2565–2568",
       } as Bilingual,
       detail: {
         en: "Computer Engineering & Informatics · GPA 2.98",
         th: "วิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์ · GPA 2.98",
       } as Bilingual,
-      past: false,
+      past: true,
+    },
+    {
+      school: {
+        en: "Sapa Rachinee School, Trang",
+        th: "โรงเรียนสภาราชินี จังหวัดตรัง",
+      } as Bilingual,
+      credential: {
+        en: "Upper Secondary Education · 2019–2021",
+        th: "มัธยมศึกษาตอนปลาย · พ.ศ. 2562–2564",
+      } as Bilingual,
+      detail: {
+        en: "Special Science and Mathematics Program",
+        th: "ห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์",
+      } as Bilingual,
+      past: true,
+    },
+    {
+      school: {
+        en: "Sapa Rachinee School, Trang",
+        th: "โรงเรียนสภาราชินี จังหวัดตรัง",
+      } as Bilingual,
+      credential: {
+        en: "Lower Secondary Education · 2016–2018",
+        th: "มัธยมศึกษาตอนต้น · พ.ศ. 2559–2561",
+      } as Bilingual,
+      detail: {
+        en: "Special Science and Mathematics Program",
+        th: "ห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์",
+      } as Bilingual,
+      past: true,
     },
   ],
 };
