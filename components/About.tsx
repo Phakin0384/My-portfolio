@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { about, coreFocus, hero, viewAll } from "@/data/site";
+import { about, coreFocus, educationSection, hero, viewAll } from "@/data/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ViewAllLink } from "@/components/ui/ViewAllLink";
@@ -45,7 +45,7 @@ function Languages() {
 
 /**
  * "home" — a preview in the home page's numbered sequence, 4/8 split.
- * "page" — the /about version: a profile card (8) beside core focus (4),
+ * "page" — the /about version: a profile card (8) beside education (4),
  *          following the Stitch layout.
  */
 export function About({ variant = "home" }: { variant?: "home" | "page" }) {
@@ -93,36 +93,57 @@ export function About({ variant = "home" }: { variant?: "home" | "page" }) {
                 <p className="text-body text-[16px]">{about.bio[lang]}</p>
               </div>
             </div>
-            <div className="mt-6 pt-5 border-t border-line flex flex-wrap gap-6 justify-between items-end">
-              <div>
-                <Languages />
+
+            <div className="mt-6 pt-5 border-t border-line">
+              <p className="font-mono text-accent2 text-[12px] tracking-[0.09em] uppercase mb-3">
+                {coreFocus.heading[lang]}
+              </p>
+              <ul className="grid sm:grid-cols-3 gap-3 mb-6">
+                {coreFocus.items.map((item, i) => (
+                  <li key={i} className="flex gap-3 items-start text-body text-[15px]">
+                    <span className="w-[5px] h-[5px] bg-accent2 mt-[11px] shrink-0" />
+                    {item[lang]}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-6 justify-between items-end pt-5 border-t border-line">
+                <div>
+                  <Languages />
+                </div>
+                <a
+                  href={hero.cta.cvHref}
+                  download
+                  className="inline-flex items-center gap-2 font-mono text-[13px] tracking-wide text-accent no-underline hover:underline"
+                >
+                  ⬇ {hero.cta.cv[lang]}
+                </a>
               </div>
-              <a
-                href={hero.cta.cvHref}
-                download
-                className="inline-flex items-center gap-2 font-mono text-[13px] tracking-wide text-accent no-underline hover:underline"
-              >
-                ⬇ {hero.cta.cv[lang]}
-              </a>
             </div>
           </div>
 
-          {/* Core focus — 4 of 12 */}
+          {/* Education — 4 of 12 */}
           <div className={`md:col-span-4 ${card} flex flex-col`}>
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-accent mb-2.5" {...stroke} strokeWidth={1.5}>
-              <rect x="4" y="4" width="16" height="16" rx="2" />
-              <rect x="9" y="9" width="6" height="6" />
-              <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" />
+              <path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
             </svg>
-            <h3 className="text-[19px] font-bold mb-4">{coreFocus.heading[lang]}</h3>
-            <ul className="grid gap-3 mt-auto">
-              {coreFocus.items.map((item, i) => (
-                <li key={i} className="flex gap-3 items-start text-body text-[15px]">
-                  <span className="w-[5px] h-[5px] bg-accent2 mt-[11px] shrink-0" />
-                  {item[lang]}
-                </li>
+            <h3 className="text-[19px] font-bold mb-4">{educationSection.heading[lang]}</h3>
+            <div className="relative border-l border-line ml-1.5 grid gap-6 mt-auto">
+              {educationSection.items.map((item, i) => (
+                <div key={i} className="relative pl-6">
+                  <span
+                    className={`absolute -left-[6.5px] top-[7px] w-3 h-3 rounded-full bg-card border-2 ${
+                      item.past ? "border-line" : "border-accent"
+                    }`}
+                  />
+                  <h4 className="text-[15.5px] font-bold">{item.school[lang]}</h4>
+                  <div className="font-mono text-accent2 text-[11px] tracking-[0.07em] uppercase mt-1 mb-1.5">
+                    {item.credential[lang]}
+                  </div>
+                  <p className="text-muted text-[14px]">{item.detail[lang]}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </FadeIn>
