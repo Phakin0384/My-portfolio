@@ -26,7 +26,7 @@ function getSnapshot(): Theme {
 
 /** Must match the class rendered on <html> by the server. */
 function getServerSnapshot(): Theme {
-  return "dark";
+  return "light";
 }
 
 export function setTheme(theme: Theme) {

@@ -46,10 +46,11 @@ export const viewport: Viewport = {
 };
 
 /**
- * Runs before first paint so the saved theme applies with no flash. Falls back
- * to the OS preference, then to dark (which is what the server renders).
+ * Runs before first paint so the saved theme applies with no flash. Light is
+ * the default for first-time visitors regardless of OS preference; only an
+ * explicit prior toggle (saved in localStorage) changes that.
  */
-const themeScript = `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}`;
+const themeScript = `try{var t=localStorage.getItem("theme");document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -59,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${inter.variable} ${notoSansThai.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${notoSansThai.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

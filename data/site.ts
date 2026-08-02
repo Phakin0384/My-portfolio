@@ -81,8 +81,8 @@ export const hero = {
   cta: {
     viewWork: { en: "View my work", th: "ดูผลงาน" } as Bilingual,
     github: "https://github.com/Phakin0384",
-    cv: { en: "Download CV", th: "ดาวน์โหลด CV" } as Bilingual,
-    cvHref: "/Phakin_Saekhow_Portfolio.pdf",
+    cv: { en: "Download Resume", th: "ดาวน์โหลดเรซูเม่" } as Bilingual,
+    cvHref: "/Resume.pdf",
   },
 };
 
@@ -203,5 +203,6 @@ export const contact = {
 
 export const footer = {
   name: "Phakin Saekhow",
-  tagline: { en: "Built as an interactive portfolio", th: "พอร์ตโฟลิโอแบบอินเทอร์แอกทีฟ" } as Bilingual,
+  // Deliberately not Bilingual — tech-stack names stay in English in both languages.
+  tagline: "Built with Next.js, Tailwind CSS & Framer Motion",
 };
