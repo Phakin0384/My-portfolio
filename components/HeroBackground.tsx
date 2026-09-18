@@ -7,7 +7,7 @@ export function HeroBackground() {
           height: "46vw",
           left: "52%",
           top: "-18%",
-          background: "radial-gradient(circle, #2a4bce, transparent 65%)",
+          background: "radial-gradient(circle, #0058be, transparent 65%)",
           animation: "drift-a 16s ease-in-out infinite",
         }}
       />
@@ -17,7 +17,7 @@ export function HeroBackground() {
           height: "40vw",
           left: "-12%",
           top: "0%",
-          background: "radial-gradient(circle, #0f7d78, transparent 65%)",
+          background: "radial-gradient(circle, #003a7d, transparent 65%)",
           animation: "drift-b 20s ease-in-out infinite",
         }}
       />
@@ -27,7 +27,7 @@ export function HeroBackground() {
           height: "34vw",
           left: "22%",
           top: "28%",
-          background: "radial-gradient(circle, #3a2f8f, transparent 65%)",
+          background: "radial-gradient(circle, #2170e4, transparent 65%)",
           animation: "drift-c 24s ease-in-out infinite",
         }}
       />

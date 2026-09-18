@@ -20,12 +20,32 @@ You need these from the user (ask for whatever's missing — never invent facts)
 - **Bullets** — the achievements/what-you-did lines (each bilingual). Lead with impact.
 - **Stack** — the tech chips (each needs a label + an `IconKey`, see step 3)
 - **Presentation** — optional: a link (Canva/slides/demo) + a bilingual button label
+- **Glyph** — optional cover icon: `"pipeline" | "calendar" | "code" | "chart"`
+  (defaults to `"code"`). Skipped entirely when the entry has a `presentation` — that
+  link takes over the cover plate.
 
 Every user-facing string must be `{ en, th }`. If the user gives only English, ask for the
 Thai, or offer to draft it and have them confirm — do not ship one language.
 
-**Order matters:** position in the `projects` array = order on the page (top first). Ask
-where it should go if it's not obviously the newest.
+**Order drives both position and size.** The Projects section is a bento grid: the first
+entry gets the wide (8-column) slot, the second the narrow (4-column) one, alternating
+after that, and a lone trailing entry spans full width (`spanFor()` in
+`components/Projects.tsx`). Newest goes first by default — but confirm with the user,
+because moving an entry to the top also makes it the visually featured one.
+
+**Every project needs a `slug`** — it's the URL segment for its album page. Kebab-case,
+unique. If the project also has `gallery` + `galleryLabel`, `/projects/<slug>` is
+generated automatically and the card grows a crossfading sample that links to it; with
+no gallery, that slug 404s, which is correct.
+
+**Screenshots:** put files in `public/images/<slug>/`, read each image's real pixel
+dimensions into `width`/`height` (don't estimate — the lightbox uses them), write
+bilingual `alt`, and set `galleryAspect: "portrait"` for phone screens.
+
+**Order also decides whether it shows on the home page.** `/projects` lists everything;
+`/` previews only the first `HOME_PROJECTS` entries (currently 2) and links to the rest.
+So an entry added at the end is reachable at `/projects` but won't appear on the home
+page — say so when you report back, and offer to reorder if that's not what they wanted.
 
 ## 2. Write the entry
 
@@ -37,6 +57,7 @@ Add an object to the `projects` array in `data/projects.ts` using this template:
   name: "Project Name",              // "" to show only the suffix
   nameSuffix: { en: "— short tagline", th: "— คำอธิบายสั้น" },
   meta: { en: "one-line context", th: "บริบทหนึ่งบรรทัด" },
+  glyph: "code",                       // optional cover icon — omit to default to "code"
   description: { en: "Optional paragraph.", th: "ย่อหน้า (ไม่บังคับ)" }, // optional — omit if none
   bullets: [
     { en: "What you did and the impact.", th: "สิ่งที่ทำและผลลัพธ์" },
@@ -67,12 +88,15 @@ tech is already covered, skip to step 4. To add a **new** icon:
      — don't guess the name.
   2. Import it in `components/ui/IconChip.tsx` and add it to the `brandIcon` map.
   3. Add the brand hex to `components/icons/brandColors.ts`. **Verify the real hex** via
-     `curl https://cdn.simpleicons.org/<slug>` — don't rely on memory. If the brand color
-     is too dark to read on the dark chip (e.g. pure black), use `#FFFFFF` (that's why
-     Java is white).
+     `curl https://cdn.simpleicons.org/<slug>` — don't rely on memory. The hex is **not**
+     themed, so it has to read on both the light chip (`#eef1fb`) and the dark one
+     (`#1b2750`). Pure black or pure white will vanish on one of them — reach for a
+     mid-tone secondary brand colour instead (that's why Java is `#5382A1`).
 - **If there's no Simple Icons slug** (a custom concept like "Dashboards"): build a small
-  SVG component in `components/icons/` following the existing `DataPipelineIcon.tsx` etc.,
-  then add a `case` for it in the `switch` inside `IconChip.tsx`'s `ChipIcon`.
+  SVG component in `components/icons/` following the existing `DataPipelineIcon.tsx` etc.
+  Draw it in **`currentColor`**, add a `case` for it in the `switch` inside `IconChip.tsx`'s
+  `ChipIcon`, and give it a theme token class there (`text-accent`, `text-accent2`,
+  `text-brand-purple`) so it stays legible in both themes.
 
 ## 4. Verify — all three must pass
 
@@ -88,8 +112,9 @@ safety net. Fix anything before moving on.
 ## 5. Show the result
 
 Start the dev server if it isn't running (`npm run dev`) and confirm the new card renders
-in **both languages** (toggle EN/TH) — check the icons show with the right colors and no
-language leaks. Report what you added.
+in **all four states** — light/dark × EN/TH — on **`/projects` and, if it made the cut,
+`/`**. Check that the icons are visible on both chip backgrounds, that the bento row
+still balances, and that there are no language leaks. Report what you added.
 
 ## Don't
 

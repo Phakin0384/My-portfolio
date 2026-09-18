@@ -8,7 +8,9 @@ export function SectionHeading({
   eyebrow,
   heading,
 }: {
-  num: string;
+  /** Position in the home page's 01–05 sequence. Omit on sub-pages, where the
+   *  numbering has no sequence to belong to. */
+  num?: string;
   eyebrow: Bilingual;
   heading: Bilingual;
 }) {
@@ -16,7 +18,8 @@ export function SectionHeading({
   return (
     <>
       <div className="font-mono text-accent2 text-[13px] tracking-wide">
-        {num} · {eyebrow[lang]}
+        {num ? `${num} · ` : ""}
+        {eyebrow[lang]}
       </div>
       <h2 className="text-[clamp(24px,3.4vw,32px)] font-extrabold mt-2 mb-1.5 tracking-tight">
         {heading[lang]}
