@@ -39,6 +39,9 @@ export const skillGroups: SkillGroup[] = [
       { label: "HTML", icon: "html5" },
       { label: "CSS", icon: "css" },
       { label: "MySQL", icon: "mysql" },
+      { label: "MongoDB", icon: "mongodb" },
+      { label: "Neon", icon: "neon" },
+      { label: "Supabase", icon: "supabase" },
       { label: "Git", icon: "git" },
       { label: "Docker", icon: "docker" },
       { label: "Figma", icon: "figma" },
@@ -51,7 +54,6 @@ export const skillGroups: SkillGroup[] = [
     chips: [
       { label: "Dataiku", icon: "dataiku" },
       { label: "Power Apps", icon: "powerapps" },
-      { label: "Data Pipeline", icon: "datapipeline" },
     ],
   },
   {

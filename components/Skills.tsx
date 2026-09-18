@@ -124,10 +124,10 @@ export function Skills({ variant = "home" }: { variant?: "home" | "page" }) {
             </div>
           )}
 
-          {rest.map((group, i) => (
+          {rest.map((group) => (
             <div
               key={group.title.en}
-              className={`${i === rest.length - 1 ? "md:col-span-12" : "md:col-span-8"} ${card}`}
+              className={`${group.chips.length <= 2 ? "md:col-span-4" : "md:col-span-8"} ${card}`}
             >
               <GroupTitle group={group} ruled />
               <Chips group={group} />
