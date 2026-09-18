@@ -24,6 +24,8 @@ export type IconKey =
   | "html5"
   | "css"
   | "mysql"
+  | "neon"
+  | "supabase"
   | "git"
   | "docker"
   | "figma"

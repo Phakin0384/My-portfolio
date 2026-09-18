@@ -21,6 +21,8 @@ export const brandColor: Partial<Record<IconKey, string>> = {
   html5: "#E34F26",
   css: "#663399",
   mysql: "#4479A1",
+  neon: "#00E599",
+  supabase: "#3ECF8E",
   git: "#F03C2E",
   docker: "#2496ED",
   figma: "#F24E1E",

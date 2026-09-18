@@ -189,7 +189,7 @@ export const projects: Project[] = [
     stack: [
       { label: "React", icon: "react" },
       { label: "Node.js", icon: "nodejs" },
-      { label: "MySQL", icon: "mysql" },
+      { label: "Neon", icon: "neon" },
       { label: "AI Integration", icon: "aiintegration" },
       { label: "Figma", icon: "figma" },
     ],
