@@ -13,19 +13,20 @@ Related docs: [`CLAUDE.md`](./CLAUDE.md) (how the codebase works),
 
 ## 1. The look, in one paragraph
 
-Corporate-minimalist, engineering-flavoured, in two themes. A 24px blueprint
-grid runs behind everything; in dark mode two soft light sources bleed in from
-the corners on top of it. Content sits on cards a step away from the ground,
-with thin borders and a soft ambient shadow. **One** accent — a single blue —
-carries links, actions, eyebrows and markers alike; hierarchy comes from tone,
-not from a second hue. Monospace is used *only* for metadata — section numbers,
-tags, tech chips, spec rows — never for body copy.
-Layout is a 12-column grid: most sections split asymmetrically (4/8, 7/5, 8/4)
-rather than stacking full-width. Motion is subtle: things fade up as you
-scroll, nothing bounces, nothing spins.
+Engineering-focused and personal, in two themes. The home page pairs a
+portrait-led introduction with a restrained blueprint grid and a soft blue
+wash; project and profile details keep the existing card-based visual language.
+**One** accent — a single blue — carries links, actions, eyebrows and markers
+alike; hierarchy comes from tone, not from a second hue. Monospace is used
+*only* for metadata — section numbers, tags, tech chips and spec rows — never
+for body copy.
+The layout uses asymmetric desktop grids that collapse cleanly to one column
+on small screens. Navigation controls remain reachable at mobile widths, and
+entrance and hover motion is disabled or minimized when reduced motion is
+preferred.
 
-It is **four pages**, not one scroller — a home page that previews the work,
-plus a dedicated page each for About, Projects, and Skills.
+It is a multi-page site, not one scroller — the home page previews the work,
+with dedicated pages for About, Projects, and Skills.
 
 ---
 
@@ -142,9 +143,9 @@ Loaded via `next/font/google` in `app/layout.tsx`, exposed as CSS vars.
 Sizes are mostly literal arbitrary values rather than the default scale,
 because this was ported 1:1 from a hand-written stylesheet:
 
-- Page title (`h1` on a sub-page) — `text-[clamp(32px,6vw,48px)]`, `font-extrabold`,
-  `leading-[1.1]`, and it ends in a full stop: *About Me.* / *Selected Work.*
-- Hero name — `text-[clamp(34px,6vw,54px)]`, `font-extrabold`, `leading-[1.05]`
+- Page title (`h1` on a sub-page) — `text-[clamp(38px,7vw,64px)]`,
+  `font-extrabold`, `leading-[1]`
+- Hero name — `text-[clamp(42px,8vw,76px)]`, `font-extrabold`, `leading-[0.98]`
 - Hero role line — `text-[clamp(18px,2.4vw,22px)]`, `text-accent`, `font-semibold`
 - Section heading (`h2`) — `text-[clamp(24px,3.4vw,32px)]`, `font-extrabold`
 - Section eyebrow — `font-mono text-accent2 text-[13px] tracking-wide`, as `NN · Label`
@@ -158,14 +159,15 @@ Clamp everything headline-sized. Nothing here uses a fixed heading px.
 
 ## 4. Layout
 
-- **Content column:** `max-w-[1040px] mx-auto px-6`, on every section, no exceptions.
+- **Content column:** sections align to a centered content column, with
+  responsive horizontal gutters.
 - **Section rhythm:** `py-14 border-t border-line/50` on home; `py-8` and no
   border on sub-pages, where the `PageHeader` already separates things.
 - **Grid:** 12 columns, `gap-[22px]`. Sections split asymmetrically:
 
 | Section | Split |
 |---|---|
-| Hero | 7 copy / 5 spec card |
+| Hero | copy / portrait profile panel; stacks on mobile |
 | About — home | 4 heading / 8 content card |
 | About — `/about` | 8 profile card / 4 core-focus card |
 | Education + Experience — `/about` | 6 / 6, equal height |
@@ -315,6 +317,8 @@ The standard section entrance: `{opacity:0, y:18}` → `whileInView`,
 |---|---|---|
 | Section reveal | fade + 18px rise, once | 0.6s `easeOut` |
 | Hero entrance | stagger children, 16px rise | 0.12s stagger, 0.6s each |
+| Portrait hover | slight image scale | 0.7s |
+| Mobile navigation | short fade + rise on open | 0.18s |
 | RoleRotator | typewriter through `hero.roles` | remounts on `key={lang}` |
 | Hero aurora | 3 blurred blobs drifting (**dark only**) | 16s / 20s / 24s |
 | Theme change | background + text cross-fade | 0.3s ease |
@@ -324,6 +328,10 @@ The standard section entrance: `{opacity:0, y:18}` → `whileInView`,
 | Back-to-top | fade + scale, appears past 400px | 0.2s |
 | Copy notice | fade + 3px rise, auto-hides | 0.18s in, 1.8s hold |
 | Hover lift | `-translate-y-0.5` (cards `-1`) | 0.2s |
+
+The `prefers-reduced-motion: reduce` media query disables smooth scrolling and
+minimizes CSS transitions/animations. Hero, page-header, and section entrance
+animations also skip their initial movement for reduced-motion users.
 
 **Rules:** hover motion is a half-step lift and nothing else. Entrances are
 `once: true`. `prefers-reduced-motion` kills the aurora; extend that guard to

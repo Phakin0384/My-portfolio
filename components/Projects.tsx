@@ -15,16 +15,6 @@ import type { Project } from "@/data/projects";
 /** How many projects the home page previews before linking to /projects. */
 const HOME_PROJECTS = 3;
 
-/**
- * Home bento rhythm: wide, narrow, wide, narrow… and a lone trailing card goes
- * full width so the grid never ends on a gap. /projects ignores this — every
- * card there is an equal half.
- */
-function spanFor(index: number, total: number) {
-  if (index % 2 === 1) return "md:col-span-4";
-  return index === total - 1 ? "md:col-span-12" : "md:col-span-8";
-}
-
 function Cover({ project }: { project: Project }) {
   const { lang } = useLanguage();
   if (project.presentation) {
@@ -46,6 +36,57 @@ function Cover({ project }: { project: Project }) {
     <div className="pcover flex items-center justify-center h-[150px] border-b border-line">
       <ProjectGlyphIcon glyph={project.glyph ?? "code"} className="w-11 h-11 text-accent opacity-85" />
     </div>
+  );
+}
+
+function HomeProjectMedia({ project }: { project: Project }) {
+  const { lang } = useLanguage();
+  const title = (
+    <h3 className="px-5 py-4 text-lg font-bold text-text">
+      {project.name && <>{project.name} </>}
+      {project.nameSuffix[lang]}
+    </h3>
+  );
+
+  if (project.gallery && project.galleryLabel) {
+    return (
+      <>
+        {title}
+        <ProjectSlideshow
+          images={project.gallery}
+          href={`/projects/${project.slug}`}
+          label={project.galleryLabel}
+          aspect={project.galleryAspect}
+          showcase
+        />
+      </>
+    );
+  }
+
+  if (project.presentation) {
+    return (
+      <>
+        {title}
+        <a
+          href={project.presentation.href}
+          target="_blank"
+          rel="noopener"
+          className="pcover flex min-h-[clamp(220px,55vw,560px)] flex-col items-center justify-center gap-3 text-center text-text font-semibold no-underline transition-colors hover:text-accent"
+        >
+          <span className="w-[56px] h-[56px] rounded-full bg-accent text-on-accent flex items-center justify-center text-lg pl-[3px] shadow-[0_8px_24px_var(--spot-glow)]">
+            ▶
+          </span>
+          <span>{project.presentation.label[lang]}</span>
+        </a>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {title}
+      <Cover project={project} />
+    </>
   );
 }
 
@@ -116,7 +157,7 @@ export function Projects({ variant = "home" }: { variant?: "home" | "page" }) {
   const shown = isPage ? projects : projects.slice(0, HOME_PROJECTS);
 
   return (
-    <FadeIn id="projects" className={isPage ? "py-8" : "py-14 border-t border-line/50"}>
+    <FadeIn id="projects" className={isPage ? "py-8" : "py-14"}>
       <div className="max-w-[1040px] mx-auto px-6">
         {!isPage && (
           <SectionHeading
@@ -129,19 +170,23 @@ export function Projects({ variant = "home" }: { variant?: "home" | "page" }) {
           className={
             isPage
               ? "grid grid-cols-1 md:grid-cols-2 gap-[22px]"
-              : "grid grid-cols-1 md:grid-cols-12 gap-[22px] mt-6"
+              : "grid grid-cols-1 gap-[22px] mt-6"
           }
         >
-          {shown.map((project, index) => (
+          {shown.map((project) => (
             <CardShell
               key={project.tag}
               spotlight={isPage}
-              className={`group relative flex flex-col rounded-[18px] overflow-hidden border border-line shadow-card bg-gradient-to-b from-card2 to-card transition-colors hover:border-accent/60 ${
-                isPage ? "" : spanFor(index, shown.length)
-              }`}
+              className="group relative flex flex-col rounded-[18px] overflow-hidden border border-line shadow-card bg-gradient-to-b from-card2 to-card transition-colors hover:border-accent/60"
             >
-              <Cover project={project} />
-              <Body project={project} />
+              {isPage ? (
+                <>
+                  <Cover project={project} />
+                  <Body project={project} />
+                </>
+              ) : (
+                <HomeProjectMedia project={project} />
+              )}
               {/* Stitch's corner arrow — only on the full grid, where the cards
                   are uniform enough for it to read as a consistent affordance. */}
               {isPage && (

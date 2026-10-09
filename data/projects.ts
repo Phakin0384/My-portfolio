@@ -131,6 +131,33 @@ export const projects: Project[] = [
         width: 1890,
         height: 868,
       },
+      {
+        src: "/images/crema/admin log-in.png",
+        alt: {
+          en: "CREMA admin sign-in screen requesting the admin passcode",
+          th: "หน้าลงชื่อเข้าใช้ระบบแอดมิน CREMA ที่ให้กรอกรหัสผ่านแอดมิน",
+        },
+        width: 1913,
+        height: 800,
+      },
+      {
+        src: "/images/crema/product management.png",
+        alt: {
+          en: "CREMA admin product manager showing menu items, prices, sweetness settings, and availability",
+          th: "หน้าจัดการสินค้า CREMA แสดงเมนู ราคา ระดับความหวาน และสถานะการจำหน่าย",
+        },
+        width: 1915,
+        height: 629,
+      },
+      {
+        src: "/images/crema/order history.png",
+        alt: {
+          en: "CREMA purchase history with order totals, revenue, and individual drink orders",
+          th: "ประวัติการสั่งซื้อ CREMA แสดงจำนวนคำสั่งซื้อ รายได้ และรายการเครื่องดื่มแต่ละรายการ",
+        },
+        width: 1914,
+        height: 782,
+      },
     ],
   },
   {

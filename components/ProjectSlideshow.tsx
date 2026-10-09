@@ -28,11 +28,13 @@ export function ProjectSlideshow({
   href,
   label,
   aspect = "landscape",
+  showcase = false,
 }: {
   images: GalleryImage[];
   href: string;
   label: Bilingual;
   aspect?: "portrait" | "landscape";
+  showcase?: boolean;
 }) {
   const { lang } = useLanguage();
   const [index, setIndex] = useState(0);
@@ -46,7 +48,13 @@ export function ProjectSlideshow({
   }, [paused, images.length]);
 
   const current = images[index];
-  const frame = aspect === "portrait" ? "h-[380px]" : "h-[220px]";
+  const frame = showcase
+    ? aspect === "portrait"
+      ? "h-[min(560px,75vh)]"
+      : "h-[clamp(220px,55vw,560px)]"
+    : aspect === "portrait"
+      ? "h-[380px]"
+      : "h-[220px]";
 
   return (
     <Link
@@ -56,7 +64,11 @@ export function ProjectSlideshow({
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="group relative block mt-5 rounded-[14px] border border-line bg-chip overflow-hidden transition-colors hover:border-accent"
+      className={`group relative block overflow-hidden transition-colors hover:border-accent ${
+        showcase
+          ? "h-full border-0 bg-transparent"
+          : "mt-5 rounded-[14px] border border-line bg-chip"
+      }`}
     >
       <div className={`relative ${frame} flex items-center justify-center`}>
         <AnimatePresence mode="sync">
@@ -73,9 +85,9 @@ export function ProjectSlideshow({
               alt={current.alt[lang]}
               width={current.width ?? 1400}
               height={current.height ?? 900}
-              sizes="240px"
+              sizes={showcase ? "(max-width: 640px) 90vw, 1000px" : "240px"}
               priority={index === 0}
-              className="max-h-full w-auto object-contain"
+              className="max-h-full max-w-full w-auto object-contain"
             />
           </motion.div>
         </AnimatePresence>

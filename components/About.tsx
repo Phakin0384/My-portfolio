@@ -123,12 +123,12 @@ export function About({ variant = "home" }: { variant?: "home" | "page" }) {
           </div>
 
           {/* Education — 4 of 12 */}
-          <div className={`md:col-span-4 ${card} flex flex-col`}>
+          <div className={`md:col-span-4 ${card} flex flex-col self-start`}>
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-accent mb-2.5" {...stroke} strokeWidth={1.5}>
               <path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
             </svg>
             <h3 className="text-[19px] font-bold mb-4">{educationSection.heading[lang]}</h3>
-            <div className="relative border-l border-line ml-1.5 grid gap-6 mt-auto">
+            <div className="relative border-l border-line ml-1.5 grid gap-4 mt-0">
               {educationSection.items.map((item, i) => (
                 <div key={i} className="relative pl-6">
                   <span
@@ -151,8 +151,8 @@ export function About({ variant = "home" }: { variant?: "home" | "page" }) {
   }
 
   return (
-    <FadeIn id="about" className="py-14 border-t border-line/50">
-      <div className="max-w-[1040px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-[22px]">
+    <FadeIn id="about" className="py-14">
+      <div className="max-w-[1040px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-[22px] items-start">
         {/* Heading — 4 of 12 */}
         <div className="md:col-span-4">
           <SectionHeading num={about.eyebrowNum} eyebrow={about.eyebrow} heading={about.heading} />

@@ -41,7 +41,7 @@ const iconProps = {
 export function Contact() {
   const { lang } = useLanguage();
   return (
-    <FadeIn id="contact" className="py-14 border-t border-line/50">
+    <FadeIn id="contact" className="py-14">
       <div className="max-w-[1040px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-[22px] items-start">
         {/* Left — how to reach me */}
         <div>

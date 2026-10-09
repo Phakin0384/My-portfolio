@@ -140,7 +140,7 @@ export function Skills({ variant = "home" }: { variant?: "home" | "page" }) {
   }
 
   return (
-    <FadeIn id="skills" className="py-14 border-t border-line/50">
+    <FadeIn id="skills" className="py-14">
       <div className="max-w-[1040px] mx-auto px-6">
         <SectionHeading num="02" eyebrow={skillsHeading} heading={skillsHeading2} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[22px] mt-6">

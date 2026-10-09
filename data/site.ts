@@ -22,8 +22,8 @@ export const pageHeaders = {
   about: {
     title: { en: "About Me.", th: "เกี่ยวกับผม" } as Bilingual,
     lead: {
-      en: "Computer Engineering graduate focused on system efficiency, data management, and IT support.",
-      th: "บัณฑิตวิศวกรรมคอมพิวเตอร์ที่มุ่งเน้นประสิทธิภาพของระบบ การจัดการข้อมูล และการสนับสนุนด้านไอที",
+      en: "Computer Engineering graduate focused on system efficiency, data management, and application development.",
+      th: "บัณฑิตวิศวกรรมคอมพิวเตอร์ที่มุ่งเน้นประสิทธิภาพของระบบ การจัดการข้อมูล และการพัฒนาแอปพลิเคชัน",
     } as Bilingual,
   },
   projects: {
@@ -57,34 +57,31 @@ export const viewAll = {
 };
 
 export const hero = {
-  kicker: "< IT & Software Developer />",
+  kicker: "< Software Developer />",
   name: "Phakin Saekhow",
   subtitle: {
-    en: "Computer Engineering · System Design · Data",
-    th: "วิศวกรรมคอมพิวเตอร์ · ออกแบบระบบ · ข้อมูล",
+    en: "Welcome to my portfolio — I'm a Computer Engineering & Informatics graduate who loves to build software, manage databases, and full-stack web solutions.",
+    th: "ยินดีต้อนรับสู่พอร์ตโฟลิโอของผม — ผมเป็นบัณฑิตวิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์ที่ชื่นชอบการสร้างซอฟต์แวร์ จัดการฐานข้อมูล และพัฒนาเว็บแบบ full-stack",
   } as Bilingual,
   // The spec card beside the hero copy. Add or remove rows freely — it's a
   // plain list, and the card grows with it.
   spec: [
     { label: { en: "degree", th: "วุฒิ" }, value: { en: "B.Eng. CPE & Informatics", th: "วศ.บ. วิศวกรรมคอมพิวเตอร์" } },
     { label: { en: "university", th: "สถาบัน" }, value: { en: "Kasetsart · Sriracha", th: "เกษตรศาสตร์ · ศรีราชา" } },
-    { label: { en: "graduated", th: "จบการศึกษา" }, value: { en: "2025", th: "2568" } },
-    { label: { en: "focus", th: "ความถนัด" }, value: { en: "Systems · Data · IT", th: "ระบบ · ข้อมูล · ไอที" } },
+    { label: { en: "graduated", th: "จบการศึกษา" }, value: { en: "2026", th: "2569" } },
+    { label: { en: "focus", th: "ความถนัด" }, value: { en: "Systems · Data · Apps", th: "ระบบ · ข้อมูล · แอปพลิเคชัน" } },
     { label: { en: "languages", th: "ภาษา" }, value: { en: "TH native · EN conv.", th: "ไทย · อังกฤษ" } },
   ] as { label: Bilingual; value: Bilingual }[],
   specStatus: { en: "open to work", th: "เปิดรับงาน" } as Bilingual,
   // Roles cycled by the animated hero rotator. Add, remove, or reorder freely —
   // keep each one accurate to what you can actually do.
   roles: [
-    { en: "IT & Software Developer", th: "นักพัฒนาไอทีและซอฟต์แวร์" },
-    { en: "Full-Stack Web Developer", th: "นักพัฒนาเว็บแบบ Full-Stack" },
-    { en: "Data Pipeline Engineer", th: "วิศวกร Data Pipeline" },
-    { en: "System & Process Designer", th: "นักออกแบบระบบและกระบวนการ" },
+    { en: "< Software Developer />", th: "< นักพัฒนาไอทีและซอฟต์แวร์ />" },
+    { en: "< Full-Stack Developer />", th: "< นักพัฒนาเว็บ Full-Stack />" },
+    { en: "< Data Engineer />", th: "< วิศวกรข้อมูล />" },
+    { en: "< Software Engineer />", th: "< วิศวกรซอฟต์แวร์ />" },
   ] as Bilingual[],
-  lead: {
-    en: "Motivated IT professional with a strong foundation in computer engineering. I build solutions that improve system and application performance — applying programming and system-management skills to solve real technical problems. Focused on system design, data management, and IT support to create stable, user-centered environments.",
-    th: "บุคลากรสายไอทีที่มีความมุ่งมั่นและมีพื้นฐานที่ดีด้านวิศวกรรมคอมพิวเตอร์ มุ่งเน้นการส่งมอบโซลูชันที่ช่วยเพิ่มประสิทธิภาพของระบบและแอปพลิเคชัน โดยนำทักษะด้านการเขียนโปรแกรมและการจัดการระบบมาใช้แก้ปัญหาทางเทคนิค ปัจจุบันมุ่งเน้นการออกแบบระบบ การจัดการข้อมูล และการสนับสนุนด้านไอที เพื่อสร้างสภาพแวดล้อมการทำงานที่เสถียรและตอบโจทย์ผู้ใช้งาน",
-  } as Bilingual,
+
   cta: {
     viewWork: { en: "View my work", th: "ดูผลงาน" } as Bilingual,
     github: "https://github.com/Phakin0384",
@@ -100,8 +97,8 @@ export const about = {
   // Sits under the heading in the left column of the 4/8 split.
   subhead: { en: "Background & goals", th: "ประวัติและเป้าหมาย" } as Bilingual,
   bio: {
-    en: "I hold a Bachelor's degree in Computer Engineering & Informatics from Kasetsart University, Sriracha Campus. I enjoy turning messy processes into clean, working systems — whether that's a full-stack web app, a data pipeline, or a low-code tool that saves a team hours of manual work.",
-    th: "ผมสำเร็จการศึกษาระดับปริญญาตรี สาขาวิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา ผมชอบเปลี่ยนกระบวนการที่ยุ่งยากให้กลายเป็นระบบที่ใช้งานได้จริง ไม่ว่าจะเป็นเว็บแอปแบบ full-stack, data pipeline หรือเครื่องมือ low-code ที่ช่วยลดงานซ้ำซ้อนของทีมได้เป็นชั่วโมง",
+    en: "I hold a Bachelor's degree in Computer Engineering & Informatics from Kasetsart University, Sriracha Campus. I enjoy turning messy processes into clean, working systems — whether that's a full-stack web app, a data management, or a low-code tool that saves a team hours of manual work.",
+    th: "ผมสำเร็จการศึกษาระดับปริญญาตรี สาขาวิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา ผมชอบเปลี่ยนกระบวนการที่ยุ่งยากให้กลายเป็นระบบที่ใช้งานได้จริง ไม่ว่าจะเป็นเว็บแอปแบบ full-stack, data management หรือเครื่องมือ low-code ที่ช่วยลดงานซ้ำซ้อนของทีมได้เป็นชั่วโมง",
   } as Bilingual,
   languagesHeading: { en: "Languages", th: "ภาษา" } as Bilingual,
   languages: [
@@ -114,12 +111,12 @@ export const about = {
     src: "/images/me/profile.jpg",
     width: 500,
     height: 631,
-    alt: { en: "Phakin Saekhow", th: "ภาคิน แซ่โค้ว" } as Bilingual,
+    alt: { en: "Phakin Saekhow", th: "ภคิน แซ่โค้ว" } as Bilingual,
   },
   // Small metadata chips beside the name on the /about profile card.
   facts: [
     { icon: "pin" as const, label: { en: "Thailand", th: "ประเทศไทย" } as Bilingual },
-    { icon: "cap" as const, label: { en: "B.Eng. 2025", th: "วศ.บ. 2568" } as Bilingual },
+    { icon: "cap" as const, label: { en: "B.Eng. 2026", th: "วศ.บ. 2569" } as Bilingual },
   ],
 };
 
@@ -127,9 +124,9 @@ export const about = {
 export const coreFocus = {
   heading: { en: "Core focus", th: "จุดมุ่งเน้นหลัก" } as Bilingual,
   items: [
-    { en: "System design & optimization", th: "ออกแบบและปรับปรุงประสิทธิภาพระบบ" } as Bilingual,
-    { en: "Data pipelines & data management", th: "Data pipeline และการจัดการข้อมูล" } as Bilingual,
-    { en: "IT support & infrastructure", th: "การสนับสนุนด้านไอทีและโครงสร้างพื้นฐาน" } as Bilingual,
+    { en: "Systems Architecture, Scalability, and Optimization", th: "ออกแบบและปรับปรุงประสิทธิภาพระบบ" } as Bilingual,
+    { en: "Data management & Data pipeline", th: "การจัดการข้อมูล และ Data pipeline" } as Bilingual,
+    { en: "Feature Execution and Application Building", th: "ทดสอบฟีเจอร์และสร้างแอปพลิเคชัน" } as Bilingual,
   ],
 };
 
@@ -178,8 +175,8 @@ export const educationSection = {
         th: "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา",
       } as Bilingual,
       credential: {
-        en: "Bachelor's Degree · 2022–2025",
-        th: "ปริญญาตรี · พ.ศ. 2565–2568",
+        en: "Bachelor's Degree · JUN 2022 – MAR 2026",
+        th: "ปริญญาตรี · มิถุนายน พ.ศ. 2565 – มีนาคม พ.ศ. 2569",
       } as Bilingual,
       detail: {
         en: "Computer Engineering & Informatics · GPA 2.98",
@@ -189,31 +186,16 @@ export const educationSection = {
     },
     {
       school: {
-        en: "Sapa Rachinee School, Trang",
+        en: "Saparachinee Trang School",
         th: "โรงเรียนสภาราชินี จังหวัดตรัง",
       } as Bilingual,
       credential: {
-        en: "Upper Secondary Education · 2019–2021",
-        th: "มัธยมศึกษาตอนปลาย · พ.ศ. 2562–2564",
+        en: "High School Diploma · Nov 2019 – Mar 2022",
+        th: "ประกาศนียบัตรมัธยมศึกษาตอนปลาย · พฤศจิกายน พ.ศ. 2562 – มีนาคม พ.ศ. 2565",
       } as Bilingual,
       detail: {
-        en: "Special Science and Mathematics Program",
-        th: "ห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์",
-      } as Bilingual,
-      past: true,
-    },
-    {
-      school: {
-        en: "Sapa Rachinee School, Trang",
-        th: "โรงเรียนสภาราชินี จังหวัดตรัง",
-      } as Bilingual,
-      credential: {
-        en: "Lower Secondary Education · 2016–2018",
-        th: "มัธยมศึกษาตอนต้น · พ.ศ. 2559–2561",
-      } as Bilingual,
-      detail: {
-        en: "Special Science and Mathematics Program",
-        th: "ห้องเรียนพิเศษวิทยาศาสตร์และคณิตศาสตร์",
+        en: "Science, Mathematics, Technology and Environment · GPA 3.65",
+        th: "ห้องเรียนพิเศษวิทยาศาสตร์ คณิตศาสตร์ เทคโนโลยี และสิ่งแวดล้อม · GPA 3.65",
       } as Bilingual,
       past: true,
     },
@@ -266,12 +248,12 @@ export const experienceSection = {
 };
 
 export const contact = {
-  eyebrowNum: "05",
+  eyebrowNum: "04",
   eyebrow: { en: "Contact", th: "ติดต่อ" } as Bilingual,
   heading: { en: "Let's build something", th: "มาสร้างอะไรดี ๆ กัน" } as Bilingual,
   lead: {
-    en: "Open to IT & developer roles. Feel free to reach out.",
-    th: "เปิดรับโอกาสในสายงานไอทีและนักพัฒนา ยินดีพูดคุยครับ",
+    en: "Open to Developer and related roles. Feel free to reach out.",
+    th: "เปิดรับโอกาสในสายDeveloperและสายที่เกี่ยวข้อง ยินดีพูดคุยครับ",
   } as Bilingual,
   email: "phakinsaekhow04@gmail.com",
   copied: { en: "Copied!", th: "คัดลอกแล้ว!" } as Bilingual,
@@ -288,8 +270,8 @@ export const contact = {
       th: "เปิดรับงานประจำ",
     } as Bilingual,
     detail: {
-      en: "IT support, software development, and data engineering — in Thailand or remote.",
-      th: "ไอทีซัพพอร์ต พัฒนาซอฟต์แวร์ และวิศวกรรมข้อมูล — ในไทยหรือทำงานทางไกล",
+      en: "Software Engineer, Software Developer, and Full-stack Developer — Working On site, Hybrid and Remote.",
+      th: "Software Engineer, Software Developer, and Full-stack Developer — ทำงาน On site, Hybrid และทำงานทางไกล",
     } as Bilingual,
   },
 };

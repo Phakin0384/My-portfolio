@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
 /* Class-based dark mode: <html> carries `.dark`, set by ThemeProvider. */
-@custom-variant dark (&:where(.dark, .dark *));
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
 
 /* ---------------------------------------------------------------
    Palette — "Technical Precision Light". Light is the source design;
@@ -27,7 +33,6 @@
   --c-brand-purple: #8b2fa8;
 
   --shadow-card-v: 0 1px 2px rgba(25, 28, 30, 0.04), 0 8px 24px -10px rgba(25, 28, 30, 0.1);
-  --grid-line: rgba(198, 198, 205, 0.38);
   --spot-glow: rgba(0, 88, 190, 0.08);
   --aurora-opacity: 0;
 }
@@ -41,20 +46,36 @@
   --c-text: #eff1f3; /* inverse-on-surface */
   --c-body: #d3d6d8;
   --c-muted: #b2b4ba;
-  --c-accent: #adc6ff; /* secondary-fixed-dim */
-  --c-accent-soft: #d8e2ff; /* secondary-fixed */
-  --c-accent2: #adc6ff;
+  --c-accent: #b9d7ff; /* light-blue CTA accent for dark mode */
+  --c-accent-soft: #dfeeff; /* brighter hover/soft surface */
+  --c-accent2: #b9d7ff;
   --c-on-accent: #001a42; /* on-secondary-fixed */
   --c-chip: #131b2e; /* primary-container */
   --c-brand-purple: #c05fd6;
 
   --shadow-card-v: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
-  --grid-line: rgba(198, 198, 205, 0.07);
   --spot-glow: rgba(173, 198, 255, 0.12);
   --aurora-opacity: 1;
 }
 
-@theme inline {
+.button-primary {
+  background-image: linear-gradient(to bottom right, var(--c-accent), var(--c-accent-soft));
+  color: var(--c-on-accent);
+  border-color: transparent;
+}
+
+.hero-spec-card {
+  background-color: var(--c-card);
+  border-color: var(--c-line);
+}
+
+/*
+  Fallback utility aliases for editors that do not understand Tailwind's
+  @theme syntax. These keep the same semantic tokens available as CSS classes.
+  Keep the same palette values as the previous version by reusing the original
+  design tokens rather than redefining the colors in a different scale.
+*/
+:root {
   --color-bg: var(--c-bg);
   --color-bg2: var(--c-bg2);
   --color-card: var(--c-card);
@@ -70,6 +91,19 @@
   --color-chip: var(--c-chip);
   --color-brand-purple: var(--c-brand-purple);
 
+  /* Legacy aliases kept in sync with the historical palette. */
+  --color-background: var(--c-bg);
+  --color-surface: var(--c-bg2);
+  --color-surface-strong: var(--c-card);
+  --color-surface-flat: var(--c-card2);
+  --color-border: var(--c-line);
+  --color-foreground: var(--c-text);
+  --color-muted-foreground: var(--c-muted);
+  --color-primary: var(--c-accent);
+  --color-primary-soft: var(--c-accent-soft);
+  --color-secondary: var(--c-accent2);
+  --color-on-primary: var(--c-on-accent);
+
   --font-sans: var(--font-inter), var(--font-noto-thai), system-ui, sans-serif;
   --font-thai: var(--font-noto-thai), var(--font-inter), sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
@@ -77,30 +111,178 @@
   --shadow-card: var(--shadow-card-v);
 }
 
+@layer utilities {
+  .bg-bg { background-color: var(--c-bg); }
+  .bg-bg2 { background-color: var(--c-bg2); }
+  .bg-card { background-color: var(--c-card); }
+  .bg-card2 { background-color: var(--c-card2); }
+  .border-line { border-color: var(--c-line); }
+  .text-text { color: var(--c-text); }
+  .text-muted { color: var(--c-muted); }
+  .text-body { color: var(--c-body); }
+  .bg-accent { background-color: var(--c-accent); }
+  .bg-accent-soft { background-color: var(--c-accent-soft); }
+  .bg-accent2 { background-color: var(--c-accent2); }
+  .text-on-accent { color: var(--c-on-accent); }
+  .bg-chip { background-color: var(--c-chip); }
+  .bg-brand-purple { background-color: var(--c-brand-purple); }
+
+  /* Legacy aliases that mirror the older palette without changing colors. */
+  .bg-background { background-color: var(--c-bg); }
+  .bg-surface { background-color: var(--c-bg2); }
+  .bg-surface-strong { background-color: var(--c-card); }
+  .bg-surface-flat { background-color: var(--c-card2); }
+  .border-border { border-color: var(--c-line); }
+  .text-foreground { color: var(--c-text); }
+  .text-muted-foreground { color: var(--c-muted); }
+  .bg-primary { background-color: var(--c-accent); }
+  .bg-primary-soft { background-color: var(--c-accent-soft); }
+  .bg-secondary { background-color: var(--c-accent2); }
+  .text-on-primary { color: var(--c-on-accent); }
+  .text-primary { color: var(--c-accent); }
+  .text-accent { color: var(--c-accent); }
+
+  .font-sans { font-family: var(--font-sans); }
+  .font-thai { font-family: var(--font-thai); }
+  .font-mono { font-family: var(--font-mono); }
+  .shadow-card { box-shadow: var(--shadow-card-v); }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Blueprint grid in both themes; the coloured wash only in dark. */
 body {
   background-color: var(--c-bg);
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
   color: var(--c-text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+::selection {
+  color: var(--c-on-accent);
+  background-color: var(--c-accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+.hero-shell {
+  background:
+    radial-gradient(ellipse at 74% 45%, var(--spot-glow), transparent 45%),
+    var(--c-bg);
+}
+
+.hero-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 15% 0%, var(--spot-glow), transparent 40%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(to right, var(--c-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--c-line) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to right, transparent, black 52%, black 92%, transparent);
+}
+
+.hero-kicker {
+  width: fit-content;
+  padding: 8px 12px;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--c-card) 82%, transparent);
+}
+
+.hero-photo-frame {
+  isolation: isolate;
+  box-shadow: 0 24px 70px -30px rgba(0, 40, 90, 0.4);
+}
+
+.hero-photo-image {
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hero-profile:hover .hero-photo-image {
+  transform: scale(1.025);
+}
+
+.hero-photo-shade {
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 32, 0.16) 0%,
+    transparent 36%,
+    transparent 54%,
+    rgba(8, 18, 32, 0.72) 100%
+  );
+}
+
+.hero-photo-frame > :not(img):not(.hero-photo-shade) {
+  z-index: 2;
+}
+
+.nav-monogram {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--c-line);
+  border-radius: 11px;
+  color: var(--c-accent);
+  background: var(--c-card);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: -0.08em;
+}
+
+.nav-control,
+.nav-menu-button {
+  min-height: 40px;
+}
+
+.mobile-nav-panel {
+  animation: mobile-nav-in 180ms ease-out both;
+}
+
+.page-header-kicker {
+  display: flex;
+  align-items: center;
+}
+
+.hero-caption {
+  flex-wrap: wrap;
+}
+
+.hero-caption span:last-child {
+  text-align: right;
+}
+
+@keyframes mobile-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .dark body {
   background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
     radial-gradient(1200px 600px at 80% -10%, #131b2e 0%, transparent 60%),
     radial-gradient(900px 500px at -10% 20%, #0b1c30 0%, transparent 55%);
-  background-size: 24px 24px, 24px 24px, cover, cover;
 }
 
 .chip {
@@ -154,6 +336,19 @@ body {
   50% { transform: translate(5%, -8%) scale(1.2); }
 }
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .hero-aurora span { animation: none !important; }
 }
 
@@ -176,11 +371,8 @@ body {
   opacity: 1;
 }
 
-/* --- Project card cover: CSS blueprint plate, no image needed --- */
+/* --- Project card cover: soft accent wash, no image needed --- */
 .pcover {
   background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
     radial-gradient(420px 150px at 50% 0%, var(--spot-glow), transparent 70%);
-  background-size: 16px 16px, 16px 16px, cover;
 }
