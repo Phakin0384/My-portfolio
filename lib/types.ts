@@ -6,7 +6,7 @@ export type Bilingual<T = string> = { en: T; th: T };
 export type SkillGlyph = "code" | "web" | "data" | "star";
 
 /** Glyph drawn on a project card's cover plate. */
-export type ProjectGlyph = "pipeline" | "calendar" | "code" | "chart";
+export type ProjectGlyph = "pipeline" | "calendar" | "code" | "chart" | "health";
 
 export type IconKey =
   | "python"
@@ -21,6 +21,11 @@ export type IconKey =
   | "flask"
   | "mongodb"
   | "nodejs"
+  | "nextjs"
+  | "express"
+  | "tailwindcss"
+  | "render"
+  | "websockets"
   | "html5"
   | "css"
   | "mysql"

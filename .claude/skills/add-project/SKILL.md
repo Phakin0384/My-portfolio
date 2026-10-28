@@ -20,9 +20,9 @@ You need these from the user (ask for whatever's missing — never invent facts)
 - **Bullets** — the achievements/what-you-did lines (each bilingual). Lead with impact.
 - **Stack** — the tech chips (each needs a label + an `IconKey`, see step 3)
 - **Presentation** — optional: a link (Canva/slides/demo) + a bilingual button label
-- **Glyph** — optional cover icon: `"pipeline" | "calendar" | "code" | "chart"`
-  (defaults to `"code"`). Skipped entirely when the entry has a `presentation` — that
-  link takes over the cover plate.
+- **Glyph** — optional cover icon: `"pipeline" | "calendar" | "code" | "chart" | "health"`
+  (defaults to `"code"`). When the entry has a `presentation`, that link takes over the
+  cover plate and the glyph (if set) replaces the ▶ in its round button.
 
 Every user-facing string must be `{ en, th }`. If the user gives only English, ask for the
 Thai, or offer to draft it and have them confirm — do not ship one language.
