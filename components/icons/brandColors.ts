@@ -28,6 +28,11 @@ export const brandColor: Partial<Record<IconKey, string>> = {
   figma: "#F24E1E",
   dataiku: "#2AB1AC",
   tailwindcss: "#06B6D4",
+  fastapi: "#009688",
+  postgresql: "#4169E1",
+  claude: "#D97757",
+  clerk: "#6C47FF",
+  githubactions: "#2088FF",
   // Next.js, Express and Render are pure-black marks with no secondary brand
   // colour, so they're left out: with no `color` they inherit the chip's themed text.
 };

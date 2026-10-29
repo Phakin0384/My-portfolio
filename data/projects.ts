@@ -300,39 +300,58 @@ export const projects: Project[] = [
   {
     slug: "beplan",
     tag: "SOFTWARE ENGINEERING PROJECT · FEB–MAR 2025",
-    name: "Beplan",
+    name: "BePlan",
     nameSuffix: { en: "— AI Scheduling App", th: "— แอปจัดตารางด้วย AI" },
     meta: { en: "University capstone project", th: "โปรเจกต์วิชาวิศวกรรมซอฟต์แวร์" },
     glyph: "calendar",
     description: {
-      en: "An intelligent scheduling application that blends AI to help users brainstorm, structure, and refine their daily plans more effectively.",
-      th: "แอปพลิเคชันจัดตารางเวลาอัจฉริยะที่ผสานความสามารถของ AI เพื่อช่วยผู้ใช้ระดมความคิด วางโครงสร้าง และปรับปรุงแผนงานประจำวันได้อย่างมีประสิทธิภาพ",
+      en: "BePlan is a mobile app that turns big goals into daily tasks. Users write a goal in plain language (Thai or English), and AI splits it into a schedule of tasks. They then mark tasks done each day and follow their progress with charts. Users can also publish their plans as templates and share them, so others can browse, favorite and reuse them. Admins manage the official templates from a web dashboard.",
+      th: "BePlan คือแอปมือถือที่เปลี่ยนเป้าหมายใหญ่ให้เป็นงานรายวัน ผู้ใช้เขียนเป้าหมายด้วยภาษาธรรมดา (ไทยหรืออังกฤษ) แล้ว AI จะแบ่งออกเป็นตารางงาน จากนั้นผู้ใช้ทำเครื่องหมายงานที่เสร็จในแต่ละวันและติดตามความคืบหน้าผ่านกราฟ ผู้ใช้ยังเผยแพร่แผนของตัวเองเป็นเทมเพลตและแชร์ได้ ให้ผู้อื่นเข้ามาดู กดชื่นชอบ และนำไปใช้ต่อ ส่วนแอดมินจัดการเทมเพลตทางการผ่านแดชบอร์ดบนเว็บ",
     },
     bullets: [
       {
-        en: "Designed a friendly, intuitive UI linking user input to AI-generated recommendations seamlessly.",
-        th: "ออกแบบ UI ที่เป็นมิตรและเข้าใจง่าย เชื่อมข้อมูลของผู้ใช้เข้ากับคำแนะนำจาก AI ได้อย่างราบรื่น",
+        en: "Designed and built the core FastAPI + PostgreSQL REST API for goals, tasks, templates and users — CRUD, task-status updates from swipes, rescheduling, and goal status that settles automatically from its tasks.",
+        th: "ออกแบบและพัฒนา REST API หลักด้วย FastAPI และ PostgreSQL สำหรับเป้าหมาย งาน เทมเพลต และผู้ใช้ ครอบคลุมการสร้าง อ่าน แก้ไข และลบข้อมูล การอัปเดตสถานะงานจากการปัด การเลื่อนกำหนดการ และสถานะเป้าหมายที่สรุปผลอัตโนมัติจากงานย่อย",
       },
       {
-        en: "Improved users' time management and personal productivity through smart planning.",
-        th: "ยกระดับการบริหารจัดการเวลาและประสิทธิผลส่วนบุคคลผ่านการวางแผนอัจฉริยะ",
+        en: "Built the AI goal-planning service on the Claude API and made it reliable, with Thai-language support, validated output and a graceful fallback when AI is unavailable.",
+        th: "สร้างบริการวางแผนเป้าหมายด้วย AI บน Claude API ให้ทำงานได้อย่างเสถียร รองรับภาษาไทย ตรวจสอบความถูกต้องของผลลัพธ์ และมีทางสำรองเมื่อ AI ใช้งานไม่ได้",
+      },
+      {
+        en: "Secured every API route with Clerk token authentication, with admin-only template endpoints, and hardened the backend — batch-inserted task dates, startup database retries, Docker, backend tests, and a database credential leak fixed by moving secrets into environment config.",
+        th: "ป้องกันทุกเส้นทาง API ด้วยการยืนยันตัวตนผ่านโทเคนของ Clerk พร้อม endpoint เฉพาะแอดมินสำหรับจัดการเทมเพลต และเพิ่มความเร็วและความทนทานของระบบหลังบ้าน ทั้งการบันทึกวันที่ของงานแบบกลุ่ม การลองเชื่อมต่อฐานข้อมูลซ้ำตอนเริ่มระบบ การทำ Docker การเขียนเทสต์ และแก้ปัญหาข้อมูลรับรองฐานข้อมูลรั่วไหลด้วยการย้ายไปเก็บใน environment config",
+      },
+      {
+        en: "Built and redesigned the major React Native / Expo screens — Schedule, Analysis, Create with template search, Community and the All-Goals overview — plus Thai/English localization and native reminder notifications on iOS and Android.",
+        th: "พัฒนาและออกแบบหน้าจอหลักด้วย React Native และ Expo ได้แก่ ตารางเวลา การวิเคราะห์ การสร้างพร้อมค้นหาเทมเพลต ชุมชน และภาพรวมเป้าหมายทั้งหมด พร้อมระบบสองภาษาไทย/อังกฤษ และการแจ้งเตือนแบบเนทีฟบน iOS และ Android",
+      },
+      {
+        en: "Fixed responsive layout across devices plus crashes and platform-specific bugs on iOS, Android and web, moved authentication to Clerk Expo Core 3, and kept Expo SDK dependencies up to date.",
+        th: "แก้ไขเลย์เอาต์ให้รองรับทุกอุปกรณ์ รวมถึงอาการแครชและบั๊กเฉพาะแพลตฟอร์มบน iOS, Android และเว็บ ย้ายระบบยืนยันตัวตนไปใช้ Clerk Expo Core 3 และอัปเดต dependencies ของ Expo SDK ให้ทันสมัยอยู่เสมอ",
+      },
+      {
+        en: "Fixed the React admin dashboard's template editor along with its backend update endpoint, set up GitHub Actions CI, and managed releases from develop to main through pull requests.",
+        th: "แก้บั๊กตัวแก้ไขเทมเพลตในแดชบอร์ดแอดมิน React พร้อมพัฒนา endpoint ฝั่งหลังบ้านที่คู่กัน ตั้งค่า CI ด้วย GitHub Actions และดูแลการ release จาก develop สู่ main ผ่าน pull request",
       },
     ],
     stack: [
-      { label: "React", icon: "react" },
-      { label: "Node.js", icon: "nodejs" },
-      { label: "Neon", icon: "neon" },
-      { label: "AI Integration", icon: "aiintegration" },
-      { label: "Figma", icon: "figma" },
+      { label: "React Native", icon: "react" },
+      { label: "Expo", icon: "expo" },
+      { label: "FastAPI", icon: "fastapi" },
+      { label: "PostgreSQL", icon: "postgresql" },
+      { label: "Claude API", icon: "claude" },
+      { label: "Clerk", icon: "clerk" },
+      { label: "Docker", icon: "docker" },
+      { label: "GitHub Actions", icon: "githubactions" },
     ],
-    galleryLabel: { en: "Beplan app screens", th: "หน้าจอแอป Beplan" },
+    galleryLabel: { en: "BePlan app screens", th: "หน้าจอแอป BePlan" },
     galleryAspect: "portrait",
     gallery: [
       {
         src: "/images/beplan/onboarding.png",
         alt: {
-          en: "Beplan onboarding screen — 'Planning Just Got Easier', with log in and open an account",
-          th: "หน้าเริ่มต้นใช้งาน Beplan พร้อมปุ่มเข้าสู่ระบบและสมัครสมาชิก",
+          en: "BePlan onboarding screen — 'Planning Just Got Easier', with log in and open an account",
+          th: "หน้าเริ่มต้นใช้งาน BePlan พร้อมปุ่มเข้าสู่ระบบและสมัครสมาชิก",
         },
         width: 439,
         height: 921,

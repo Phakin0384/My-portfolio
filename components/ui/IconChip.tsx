@@ -24,6 +24,11 @@ import {
   SiExpress,
   SiTailwindcss,
   SiRender,
+  SiFastapi,
+  SiPostgresql,
+  SiClaude,
+  SiClerk,
+  SiGithubactions,
 } from "react-icons/si";
 import type { IconKey } from "@/lib/types";
 import { brandColor } from "@/components/icons/brandColors";
@@ -59,6 +64,11 @@ const brandIcon: Partial<Record<IconKey, typeof SiPython>> = {
   express: SiExpress,
   tailwindcss: SiTailwindcss,
   render: SiRender,
+  fastapi: SiFastapi,
+  postgresql: SiPostgresql,
+  claude: SiClaude,
+  clerk: SiClerk,
+  githubactions: SiGithubactions,
 };
 
 /** Exported so /skills can render the same icons larger than a chip does. */
