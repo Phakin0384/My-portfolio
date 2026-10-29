@@ -18,7 +18,8 @@ export type Project = {
   name: string;
   nameSuffix: Bilingual;
   meta: Bilingual;
-  /** Drawn on the card's cover plate. Defaults to "code" when omitted. */
+  /** Drawn on the card's cover plate. Defaults to "code" when omitted. With a
+   *  `presentation`, it replaces the ▶ in the link button instead. */
   glyph?: ProjectGlyph;
   description?: Bilingual;
   bullets: Bilingual[];
@@ -46,6 +47,111 @@ export const projectsSection = {
  * lone entry at the end spans the full width. Newest work goes first.
  */
 export const projects: Project[] = [
+  {
+    slug: "health-care-intake",
+    tag: "PERSONAL PROJECT · 2026",
+    name: "HEALTH CARE INTAKE",
+    nameSuffix: { en: "— Real-Time Patient Registration", th: "— ระบบลงทะเบียนผู้ป่วยแบบเรียลไทม์" },
+    meta: {
+      en: "A patient intake form that streams each answer live to a staff dashboard as it's typed.",
+      th: "แบบฟอร์มลงทะเบียนผู้ป่วยที่ส่งคำตอบแต่ละช่องไปยังแดชบอร์ดของเจ้าหน้าที่แบบสดขณะพิมพ์",
+    },
+    glyph: "health",
+    description: {
+      en: "At most clinics, staff only see a patient's registration once it's handed in. In this system, patients fill in the form on their phone while staff watch each field appear in real time, along with whether the patient is typing, has paused or has left the form. Staff can then triage, review records and send emergency alerts to every screen.",
+      th: "ในคลินิกส่วนใหญ่ เจ้าหน้าที่จะเห็นข้อมูลลงทะเบียนของผู้ป่วยก็ต่อเมื่อส่งแบบฟอร์มแล้วเท่านั้น ระบบนี้ให้ผู้ป่วยกรอกแบบฟอร์มบนโทรศัพท์ ขณะที่เจ้าหน้าที่เห็นแต่ละช่องปรากฏขึ้นแบบเรียลไทม์ พร้อมสถานะว่าผู้ป่วยกำลังพิมพ์ หยุดพัก หรือออกจากแบบฟอร์มไปแล้ว จากนั้นเจ้าหน้าที่สามารถคัดกรองผู้ป่วย ตรวจสอบประวัติ และส่งการแจ้งเตือนฉุกเฉินไปยังทุกหน้าจอได้",
+    },
+    bullets: [
+      {
+        en: "Built real-time form mirroring over WebSockets, so staff see each field as it's typed, with Typing, Paused and Abandoned states.",
+        th: "สร้างระบบสะท้อนแบบฟอร์มแบบเรียลไทม์ผ่าน WebSockets ให้เจ้าหน้าที่เห็นแต่ละช่องขณะผู้ป่วยพิมพ์ พร้อมสถานะกำลังพิมพ์ หยุดพัก และออกจากแบบฟอร์ม",
+      },
+      {
+        en: "Put all business logic in one pure, unit-tested function kept separate from the networking code (35 tests), with types and validation shared between client and server.",
+        th: "รวมตรรกะทางธุรกิจทั้งหมดไว้ในฟังก์ชันบริสุทธิ์ฟังก์ชันเดียวที่แยกจากโค้ดด้านเครือข่ายและผ่านการทดสอบหน่วย (35 เทสต์) โดยใช้ไทป์และการตรวจสอบข้อมูลร่วมกันทั้งฝั่งไคลเอนต์และเซิร์ฟเวอร์",
+      },
+      {
+        en: "Kept data safe through dropped connections and restarts: auto-reconnect with an HTTP fallback, resumable sessions and atomic saves.",
+        th: "ปกป้องข้อมูลไม่ให้สูญหายเมื่อการเชื่อมต่อขาดหรือระบบรีสตาร์ท ด้วยการเชื่อมต่อใหม่อัตโนมัติพร้อมช่องทางสำรองผ่าน HTTP เซสชันที่กลับมากรอกต่อได้ และการบันทึกแบบอะตอมมิก",
+      },
+      {
+        en: "Added triage, live analytics, an audit log and emergency broadcasts, all keyboard and screen-reader accessible.",
+        th: "เพิ่มระบบคัดกรองผู้ป่วย การวิเคราะห์ข้อมูลแบบสด บันทึกการตรวจสอบ (audit log) และการประกาศเหตุฉุกเฉิน ทั้งหมดใช้งานได้ด้วยคีย์บอร์ดและโปรแกรมอ่านหน้าจอ",
+      },
+    ],
+    stack: [
+      { label: "Next.js", icon: "nextjs" },
+      { label: "React", icon: "react" },
+      { label: "TypeScript", icon: "typescript" },
+      { label: "Node.js", icon: "nodejs" },
+      { label: "Express", icon: "express" },
+      { label: "WebSockets", icon: "websockets" },
+      { label: "Tailwind CSS", icon: "tailwindcss" },
+      { label: "Render", icon: "render" },
+    ],
+    presentation: {
+      href: "https://health-care-intake.onrender.com",
+      label: { en: "View live demo", th: "ดูเดโมออนไลน์" },
+    },
+    galleryLabel: { en: "Health Care Intake screens", th: "หน้าจอระบบ Health Care Intake" },
+    galleryAspect: "landscape",
+    gallery: [
+      {
+        src: "/images/healthcare-intake/default-portal.png",
+        alt: {
+          en: "Welcome screen — choose between the Patient Portal and Staff Systems",
+          th: "หน้าต้อนรับ เลือกระหว่างพอร์ทัลผู้ป่วยและระบบเจ้าหน้าที่",
+        },
+        width: 1912,
+        height: 844,
+      },
+      {
+        src: "/images/healthcare-intake/patient-information.png",
+        alt: {
+          en: "Patient form — personal information and contact details sections",
+          th: "แบบฟอร์มผู้ป่วย ส่วนข้อมูลส่วนตัวและข้อมูลการติดต่อ",
+        },
+        width: 1061,
+        height: 899,
+      },
+      {
+        src: "/images/healthcare-intake/patient-information2.png",
+        alt: {
+          en: "Patient form — emergency contact, consent checkbox and submit button",
+          th: "แบบฟอร์มผู้ป่วย ส่วนผู้ติดต่อกรณีฉุกเฉิน การยินยอม และปุ่มส่งข้อมูล",
+        },
+        width: 1030,
+        height: 896,
+      },
+      {
+        src: "/images/healthcare-intake/staff-monitor.png",
+        alt: {
+          en: "Staff patient monitor — live session cards filling in field by field, with paused and submitted states",
+          th: "หน้าติดตามผู้ป่วยของเจ้าหน้าที่ การ์ดแต่ละเซสชันแสดงข้อมูลที่กรอกแบบสดทีละช่อง พร้อมสถานะหยุดพักและส่งแล้ว",
+        },
+        width: 1899,
+        height: 903,
+      },
+      {
+        src: "/images/healthcare-intake/patient-record.png",
+        alt: {
+          en: "Patient record — submitted details, intake progress and triage notes",
+          th: "ประวัติผู้ป่วย แสดงข้อมูลที่ส่งแล้ว ความคืบหน้าการลงทะเบียน และบันทึกการคัดกรอง",
+        },
+        width: 1895,
+        height: 900,
+      },
+      {
+        src: "/images/healthcare-intake/analytics.png",
+        alt: {
+          en: "Clinic analytics — today's intake, average intake time, completion rate and triage severity breakdown",
+          th: "หน้าวิเคราะห์ข้อมูลคลินิก จำนวนผู้ป่วยวันนี้ เวลาลงทะเบียนเฉลี่ย อัตราการกรอกครบ และสัดส่วนระดับความรุนแรงจากการคัดกรอง",
+        },
+        width: 1913,
+        height: 899,
+      },
+    ],
+  },
   {
     slug: "crema",
     tag: "PERSONAL PROJECT · 2026",
@@ -166,7 +272,6 @@ export const projects: Project[] = [
     name: "",
     nameSuffix: { en: "Quality Obtention (QO) Intern", th: "นักศึกษาฝึกงาน ตำแหน่ง QO" },
     meta: { en: "Data engineering & process digitization", th: "วิศวกรรมข้อมูลและการทำงานสู่ระบบดิจิทัล" },
-    glyph: "pipeline",
     bullets: [
       {
         en: "Built a Dataiku data pipeline integrating multiple production systems, cutting redundant analysis steps and helping QO staff trace root causes of substandard tires faster and more accurately.",

@@ -20,6 +20,10 @@ import {
   SiDocker,
   SiFigma,
   SiDataiku,
+  SiNextdotjs,
+  SiExpress,
+  SiTailwindcss,
+  SiRender,
 } from "react-icons/si";
 import type { IconKey } from "@/lib/types";
 import { brandColor } from "@/components/icons/brandColors";
@@ -27,6 +31,7 @@ import { PowerAppsIcon } from "@/components/icons/PowerAppsIcon";
 import { DataPipelineIcon } from "@/components/icons/DataPipelineIcon";
 import { DashboardsIcon } from "@/components/icons/DashboardsIcon";
 import { AiIntegrationIcon } from "@/components/icons/AiIntegrationIcon";
+import { WebSocketsIcon } from "@/components/icons/WebSocketsIcon";
 
 const brandIcon: Partial<Record<IconKey, typeof SiPython>> = {
   python: SiPython,
@@ -50,6 +55,10 @@ const brandIcon: Partial<Record<IconKey, typeof SiPython>> = {
   docker: SiDocker,
   figma: SiFigma,
   dataiku: SiDataiku,
+  nextjs: SiNextdotjs,
+  express: SiExpress,
+  tailwindcss: SiTailwindcss,
+  render: SiRender,
 };
 
 /** Exported so /skills can render the same icons larger than a chip does. */
@@ -68,6 +77,8 @@ export function ChipIcon({ icon, size = 15 }: { icon: IconKey; size?: number }) 
       return <DashboardsIcon style={box} className="shrink-0 text-accent" />;
     case "aiintegration":
       return <AiIntegrationIcon style={box} className="shrink-0 text-accent" />;
+    case "websockets":
+      return <WebSocketsIcon style={box} className="shrink-0 text-accent" />;
     default:
       return null;
   }

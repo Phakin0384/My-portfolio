@@ -22,11 +22,11 @@ function Cover({ project }: { project: Project }) {
       <a
         href={project.presentation.href}
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         className="pcover flex flex-col items-center justify-center gap-2.5 h-[150px] border-b border-line text-text font-semibold text-[14px] no-underline transition-colors hover:text-accent"
       >
-        <span className="w-[46px] h-[46px] rounded-full bg-accent text-on-accent flex items-center justify-center text-base pl-[3px] shadow-[0_8px_24px_var(--spot-glow)]">
-          ▶
+        <span className={`w-[46px] h-[46px] rounded-full bg-accent text-on-accent flex items-center justify-center text-base ${project.glyph ? "" : "pl-[3px]"} shadow-[0_8px_24px_var(--spot-glow)]`}>
+          {project.glyph ? <ProjectGlyphIcon glyph={project.glyph} className="w-6 h-6" /> : "▶"}
         </span>
         {project.presentation.label[lang]}
       </a>
@@ -70,11 +70,11 @@ function HomeProjectMedia({ project }: { project: Project }) {
         <a
           href={project.presentation.href}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="pcover flex min-h-[clamp(220px,55vw,560px)] flex-col items-center justify-center gap-3 text-center text-text font-semibold no-underline transition-colors hover:text-accent"
         >
-          <span className="w-[56px] h-[56px] rounded-full bg-accent text-on-accent flex items-center justify-center text-lg pl-[3px] shadow-[0_8px_24px_var(--spot-glow)]">
-            ▶
+          <span className={`w-[56px] h-[56px] rounded-full bg-accent text-on-accent flex items-center justify-center text-lg ${project.glyph ? "" : "pl-[3px]"} shadow-[0_8px_24px_var(--spot-glow)]`}>
+            {project.glyph ? <ProjectGlyphIcon glyph={project.glyph} className="w-7 h-7" /> : "▶"}
           </span>
           <span>{project.presentation.label[lang]}</span>
         </a>
@@ -175,7 +175,7 @@ export function Projects({ variant = "home" }: { variant?: "home" | "page" }) {
         >
           {shown.map((project) => (
             <CardShell
-              key={project.tag}
+              key={project.slug}
               spotlight={isPage}
               className="group relative flex flex-col rounded-[18px] overflow-hidden border border-line shadow-card bg-gradient-to-b from-card2 to-card transition-colors hover:border-accent/60"
             >
