@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Album } from "@/components/Album";
 
 export const metadata: Metadata = {
-  title: pageHeaders.certificates.title.en,
+  title: "Certificates",
   description: pageHeaders.certificates.lead.en,
 };
 

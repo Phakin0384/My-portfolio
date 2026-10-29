@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function ScrollToTop() {
+  const { lang } = useLanguage();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export function ScrollToTop() {
         <motion.button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Back to top"
+          aria-label={lang === "en" ? "Back to top" : "กลับขึ้นด้านบน"}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}

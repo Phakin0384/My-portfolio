@@ -1,17 +1,23 @@
 "use client";
 
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function ThemeToggle() {
   const { theme, toggle } = useTheme();
+  const { lang } = useLanguage();
   const isDark = theme === "dark";
 
   return (
     <button
       type="button"
       onClick={toggle}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      title={isDark ? "Light mode" : "Dark mode"}
+      aria-label={
+        lang === "en"
+          ? isDark ? "Switch to light theme" : "Switch to dark theme"
+          : isDark ? "เปลี่ยนเป็นธีมสว่าง" : "เปลี่ยนเป็นธีมมืด"
+      }
+      title={lang === "en" ? (isDark ? "Light mode" : "Dark mode") : isDark ? "โหมดสว่าง" : "โหมดมืด"}
       className="w-9 h-9 rounded-full border border-line bg-chip text-text flex items-center justify-center cursor-pointer transition-[border-color,transform] hover:border-accent hover:-translate-y-0.5"
     >
       {isDark ? (
