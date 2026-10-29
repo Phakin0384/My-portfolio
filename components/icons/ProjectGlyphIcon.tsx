@@ -32,6 +32,12 @@ const paths: Record<ProjectGlyph, React.ReactNode> = {
       <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
     </>
   ),
+  coffee: (
+    <>
+      <path d="M6 2v2M10 2v2M14 2v2" />
+      <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+    </>
+  ),
 };
 
 export function ProjectGlyphIcon({ glyph, className = "" }: { glyph: ProjectGlyph; className?: string }) {

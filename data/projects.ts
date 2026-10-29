@@ -44,228 +44,10 @@ export const projectsSection = {
 /**
  * Order matters — the bento grid gives the FIRST entry the wide (8-column)
  * slot and the second the narrow (4-column) one, alternating after that. A
- * lone entry at the end spans the full width. Newest work goes first.
+ * lone entry at the end spans the full width. This is the display order on
+ * both / and /projects (home shows only the first HOME_PROJECTS).
  */
 export const projects: Project[] = [
-  {
-    slug: "health-care-intake",
-    tag: "PERSONAL PROJECT · 2026",
-    name: "HEALTH CARE INTAKE",
-    nameSuffix: { en: "— Real-Time Patient Registration", th: "— ระบบลงทะเบียนผู้ป่วยแบบเรียลไทม์" },
-    meta: {
-      en: "A patient intake form that streams each answer live to a staff dashboard as it's typed.",
-      th: "แบบฟอร์มลงทะเบียนผู้ป่วยที่ส่งคำตอบแต่ละช่องไปยังแดชบอร์ดของเจ้าหน้าที่แบบสดขณะพิมพ์",
-    },
-    glyph: "health",
-    description: {
-      en: "At most clinics, staff only see a patient's registration once it's handed in. In this system, patients fill in the form on their phone while staff watch each field appear in real time, along with whether the patient is typing, has paused or has left the form. Staff can then triage, review records and send emergency alerts to every screen.",
-      th: "ในคลินิกส่วนใหญ่ เจ้าหน้าที่จะเห็นข้อมูลลงทะเบียนของผู้ป่วยก็ต่อเมื่อส่งแบบฟอร์มแล้วเท่านั้น ระบบนี้ให้ผู้ป่วยกรอกแบบฟอร์มบนโทรศัพท์ ขณะที่เจ้าหน้าที่เห็นแต่ละช่องปรากฏขึ้นแบบเรียลไทม์ พร้อมสถานะว่าผู้ป่วยกำลังพิมพ์ หยุดพัก หรือออกจากแบบฟอร์มไปแล้ว จากนั้นเจ้าหน้าที่สามารถคัดกรองผู้ป่วย ตรวจสอบประวัติ และส่งการแจ้งเตือนฉุกเฉินไปยังทุกหน้าจอได้",
-    },
-    bullets: [
-      {
-        en: "Built real-time form mirroring over WebSockets, so staff see each field as it's typed, with Typing, Paused and Abandoned states.",
-        th: "สร้างระบบสะท้อนแบบฟอร์มแบบเรียลไทม์ผ่าน WebSockets ให้เจ้าหน้าที่เห็นแต่ละช่องขณะผู้ป่วยพิมพ์ พร้อมสถานะกำลังพิมพ์ หยุดพัก และออกจากแบบฟอร์ม",
-      },
-      {
-        en: "Put all business logic in one pure, unit-tested function kept separate from the networking code (35 tests), with types and validation shared between client and server.",
-        th: "รวมตรรกะทางธุรกิจทั้งหมดไว้ในฟังก์ชันบริสุทธิ์ฟังก์ชันเดียวที่แยกจากโค้ดด้านเครือข่ายและผ่านการทดสอบหน่วย (35 เทสต์) โดยใช้ไทป์และการตรวจสอบข้อมูลร่วมกันทั้งฝั่งไคลเอนต์และเซิร์ฟเวอร์",
-      },
-      {
-        en: "Kept data safe through dropped connections and restarts: auto-reconnect with an HTTP fallback, resumable sessions and atomic saves.",
-        th: "ปกป้องข้อมูลไม่ให้สูญหายเมื่อการเชื่อมต่อขาดหรือระบบรีสตาร์ท ด้วยการเชื่อมต่อใหม่อัตโนมัติพร้อมช่องทางสำรองผ่าน HTTP เซสชันที่กลับมากรอกต่อได้ และการบันทึกแบบอะตอมมิก",
-      },
-      {
-        en: "Added triage, live analytics, an audit log and emergency broadcasts, all keyboard and screen-reader accessible.",
-        th: "เพิ่มระบบคัดกรองผู้ป่วย การวิเคราะห์ข้อมูลแบบสด บันทึกการตรวจสอบ (audit log) และการประกาศเหตุฉุกเฉิน ทั้งหมดใช้งานได้ด้วยคีย์บอร์ดและโปรแกรมอ่านหน้าจอ",
-      },
-    ],
-    stack: [
-      { label: "Next.js", icon: "nextjs" },
-      { label: "React", icon: "react" },
-      { label: "TypeScript", icon: "typescript" },
-      { label: "Node.js", icon: "nodejs" },
-      { label: "Express", icon: "express" },
-      { label: "WebSockets", icon: "websockets" },
-      { label: "Tailwind CSS", icon: "tailwindcss" },
-      { label: "Render", icon: "render" },
-    ],
-    presentation: {
-      href: "https://health-care-intake.onrender.com",
-      label: { en: "View live demo", th: "ดูเดโมออนไลน์" },
-    },
-    galleryLabel: { en: "Health Care Intake screens", th: "หน้าจอระบบ Health Care Intake" },
-    galleryAspect: "landscape",
-    gallery: [
-      {
-        src: "/images/healthcare-intake/default-portal.png",
-        alt: {
-          en: "Welcome screen — choose between the Patient Portal and Staff Systems",
-          th: "หน้าต้อนรับ เลือกระหว่างพอร์ทัลผู้ป่วยและระบบเจ้าหน้าที่",
-        },
-        width: 1912,
-        height: 844,
-      },
-      {
-        src: "/images/healthcare-intake/patient-information.png",
-        alt: {
-          en: "Patient form — personal information and contact details sections",
-          th: "แบบฟอร์มผู้ป่วย ส่วนข้อมูลส่วนตัวและข้อมูลการติดต่อ",
-        },
-        width: 1061,
-        height: 899,
-      },
-      {
-        src: "/images/healthcare-intake/patient-information2.png",
-        alt: {
-          en: "Patient form — emergency contact, consent checkbox and submit button",
-          th: "แบบฟอร์มผู้ป่วย ส่วนผู้ติดต่อกรณีฉุกเฉิน การยินยอม และปุ่มส่งข้อมูล",
-        },
-        width: 1030,
-        height: 896,
-      },
-      {
-        src: "/images/healthcare-intake/staff-monitor.png",
-        alt: {
-          en: "Staff patient monitor — live session cards filling in field by field, with paused and submitted states",
-          th: "หน้าติดตามผู้ป่วยของเจ้าหน้าที่ การ์ดแต่ละเซสชันแสดงข้อมูลที่กรอกแบบสดทีละช่อง พร้อมสถานะหยุดพักและส่งแล้ว",
-        },
-        width: 1899,
-        height: 903,
-      },
-      {
-        src: "/images/healthcare-intake/patient-record.png",
-        alt: {
-          en: "Patient record — submitted details, intake progress and triage notes",
-          th: "ประวัติผู้ป่วย แสดงข้อมูลที่ส่งแล้ว ความคืบหน้าการลงทะเบียน และบันทึกการคัดกรอง",
-        },
-        width: 1895,
-        height: 900,
-      },
-      {
-        src: "/images/healthcare-intake/analytics.png",
-        alt: {
-          en: "Clinic analytics — today's intake, average intake time, completion rate and triage severity breakdown",
-          th: "หน้าวิเคราะห์ข้อมูลคลินิก จำนวนผู้ป่วยวันนี้ เวลาลงทะเบียนเฉลี่ย อัตราการกรอกครบ และสัดส่วนระดับความรุนแรงจากการคัดกรอง",
-        },
-        width: 1913,
-        height: 899,
-      },
-    ],
-  },
-  {
-    slug: "crema",
-    tag: "PERSONAL PROJECT · 2026",
-    name: "CREMA",
-    nameSuffix: { en: "— Coffee Machine Kiosk", th: "— ระบบคีออสก์เครื่องชงกาแฟ" },
-    meta: {
-      en: "Kiosk, mobile app, and web admin from one codebase",
-      th: "คีออสก์ แอปมือถือ และแอดมินบนเว็บ จากโค้ดชุดเดียว",
-    },
-    glyph: "code",
-    description: {
-      en: "A self-service coffee kiosk built from one Expo / React Native codebase that runs as a touchscreen kiosk, a native app, and a web panel. Customers order through Home → Menu → Customize → Payment → Thank you, while staff manage the live menu from a token-protected admin dashboard.",
-      th: "ระบบสั่งกาแฟแบบบริการตนเอง จากโค้ด Expo / React Native ชุดเดียว ใช้ได้ทั้งคีออสก์หน้าจอสัมผัส แอปเนทีฟ และหน้าเว็บ ลูกค้าสั่งผ่านขั้นตอน หน้าแรก → เมนู → ปรับแต่ง → ชำระเงิน → ขอบคุณ ส่วนพนักงานจัดการเมนูผ่านแดชบอร์ดแอดมินที่ป้องกันด้วยโทเคน",
-    },
-    bullets: [
-      {
-        en: "Implemented the EMVCo / PromptPay spec from scratch with no payment dependencies — TLV encoding, amount-embedded payloads, and a hand-written CRC-16/CCITT-FALSE checksum — so each order renders its own payment QR client-side, verified by Jest against reference vectors.",
-        th: "พัฒนามาตรฐาน EMVCo / พร้อมเพย์ขึ้นเองทั้งหมดโดยไม่ใช้ไลบรารีด้านการชำระเงิน ทั้งการเข้ารหัสแบบ TLV เพย์โหลดที่ระบุยอดเงิน และ checksum แบบ CRC-16/CCITT-FALSE ทำให้แต่ละคำสั่งซื้อสร้าง QR ได้เองฝั่งไคลเอนต์ ทดสอบด้วย Jest เทียบกับค่าอ้างอิง",
-      },
-      {
-        en: "Shipped one adaptive codebase across web, native, and kiosk, backed by a Flask REST API on MongoDB Atlas handling product CRUD, order storage, and CSV export.",
-        th: "ใช้โค้ดชุดเดียวรองรับทั้งเว็บ แอปเนทีฟ และคีออสก์ ทำงานร่วมกับ REST API ด้วย Flask บน MongoDB Atlas ที่จัดการข้อมูลสินค้า เก็บคำสั่งซื้อ และส่งออกเป็น CSV",
-      },
-      {
-        en: "Kept core logic in pure, framework-free modules behind a full quality gate — ESLint, Prettier, TypeScript and Jest on the frontend, pytest on the backend.",
-        th: "แยกตรรกะหลักไว้ในโมดูลที่ไม่ผูกกับเฟรมเวิร์ก ภายใต้ระบบตรวจคุณภาพครบชุด ทั้ง ESLint, Prettier, TypeScript และ Jest ฝั่งหน้าบ้าน และ pytest ฝั่งหลังบ้าน",
-      },
-    ],
-    stack: [
-      { label: "React Native", icon: "react" },
-      { label: "Expo", icon: "expo" },
-      { label: "TypeScript", icon: "typescript" },
-      { label: "Jest", icon: "jest" },
-      { label: "Flask", icon: "flask" },
-      { label: "MongoDB", icon: "mongodb" },
-      { label: "Python", icon: "python" },
-    ],
-    galleryLabel: { en: "CREMA kiosk screens", th: "หน้าจอคีออสก์ CREMA" },
-    galleryAspect: "landscape",
-    gallery: [
-      {
-        src: "/images/crema/home.png",
-        alt: {
-          en: "Kiosk attract screen — the CREMA mark over 'touch to start'",
-          th: "หน้าจอพักของคีออสก์ แสดงโลโก้ CREMA พร้อมข้อความแตะเพื่อเริ่ม",
-        },
-        width: 1910,
-        height: 884,
-      },
-      {
-        src: "/images/crema/menu.png",
-        alt: {
-          en: "Step 1 — choose your coffee, with Mocca, Americano, Espresso, Cappuccino and Latte",
-          th: "ขั้นที่ 1 เลือกกาแฟ ทั้งมอคค่า อเมริกาโน่ เอสเพรสโซ่ คาปูชิโน่ และลาเต้",
-        },
-        width: 1911,
-        height: 611,
-      },
-      {
-        src: "/images/crema/customize.png",
-        alt: {
-          en: "Step 2 — customize sweetness and hot or cold, with a running total",
-          th: "ขั้นที่ 2 ปรับระดับความหวานและเลือกร้อนหรือเย็น พร้อมแสดงราคารวม",
-        },
-        width: 1892,
-        height: 871,
-      },
-      {
-        src: "/images/crema/payment.png",
-        alt: {
-          en: "Step 3 — the generated PromptPay QR encoding this order's exact amount, awaiting payment",
-          th: "ขั้นที่ 3 QR พร้อมเพย์ที่สร้างขึ้นพร้อมระบุยอดเงินของคำสั่งซื้อนี้ รอการชำระเงิน",
-        },
-        width: 1894,
-        height: 792,
-      },
-      {
-        src: "/images/crema/thank-you.png",
-        alt: {
-          en: "Order confirmed — the drink is brewing, with its order number, before returning home",
-          th: "ยืนยันคำสั่งซื้อแล้ว กำลังชงเครื่องดื่ม พร้อมหมายเลขคำสั่งซื้อ ก่อนกลับสู่หน้าแรก",
-        },
-        width: 1890,
-        height: 868,
-      },
-      {
-        src: "/images/crema/admin log-in.png",
-        alt: {
-          en: "CREMA admin sign-in screen requesting the admin passcode",
-          th: "หน้าลงชื่อเข้าใช้ระบบแอดมิน CREMA ที่ให้กรอกรหัสผ่านแอดมิน",
-        },
-        width: 1913,
-        height: 800,
-      },
-      {
-        src: "/images/crema/product management.png",
-        alt: {
-          en: "CREMA admin product manager showing menu items, prices, sweetness settings, and availability",
-          th: "หน้าจัดการสินค้า CREMA แสดงเมนู ราคา ระดับความหวาน และสถานะการจำหน่าย",
-        },
-        width: 1915,
-        height: 629,
-      },
-      {
-        src: "/images/crema/order history.png",
-        alt: {
-          en: "CREMA purchase history with order totals, revenue, and individual drink orders",
-          th: "ประวัติการสั่งซื้อ CREMA แสดงจำนวนคำสั่งซื้อ รายได้ และรายการเครื่องดื่มแต่ละรายการ",
-        },
-        width: 1914,
-        height: 782,
-      },
-    ],
-  },
   {
     slug: "michelin-qo",
     tag: "INTERNSHIP · SIAM MICHELIN (LMC SITE) · DEC 2025–MAR 2026",
@@ -436,6 +218,225 @@ export const projects: Project[] = [
         },
         width: 407,
         height: 906,
+      },
+    ],
+  },
+  {
+    slug: "health-care-intake",
+    tag: "PERSONAL PROJECT · 2026",
+    name: "HEALTH CARE INTAKE",
+    nameSuffix: { en: "— Real-Time Patient Registration", th: "— ระบบลงทะเบียนผู้ป่วยแบบเรียลไทม์" },
+    meta: {
+      en: "A patient intake form that streams each answer live to a staff dashboard as it's typed.",
+      th: "แบบฟอร์มลงทะเบียนผู้ป่วยที่ส่งคำตอบแต่ละช่องไปยังแดชบอร์ดของเจ้าหน้าที่แบบสดขณะพิมพ์",
+    },
+    glyph: "health",
+    description: {
+      en: "At most clinics, staff only see a patient's registration once it's handed in. In this system, patients fill in the form on their phone while staff watch each field appear in real time, along with whether the patient is typing, has paused or has left the form. Staff can then triage, review records and send emergency alerts to every screen.",
+      th: "ในคลินิกส่วนใหญ่ เจ้าหน้าที่จะเห็นข้อมูลลงทะเบียนของผู้ป่วยก็ต่อเมื่อส่งแบบฟอร์มแล้วเท่านั้น ระบบนี้ให้ผู้ป่วยกรอกแบบฟอร์มบนโทรศัพท์ ขณะที่เจ้าหน้าที่เห็นแต่ละช่องปรากฏขึ้นแบบเรียลไทม์ พร้อมสถานะว่าผู้ป่วยกำลังพิมพ์ หยุดพัก หรือออกจากแบบฟอร์มไปแล้ว จากนั้นเจ้าหน้าที่สามารถคัดกรองผู้ป่วย ตรวจสอบประวัติ และส่งการแจ้งเตือนฉุกเฉินไปยังทุกหน้าจอได้",
+    },
+    bullets: [
+      {
+        en: "Built real-time form mirroring over WebSockets, so staff see each field as it's typed, with Typing, Paused and Abandoned states.",
+        th: "สร้างระบบสะท้อนแบบฟอร์มแบบเรียลไทม์ผ่าน WebSockets ให้เจ้าหน้าที่เห็นแต่ละช่องขณะผู้ป่วยพิมพ์ พร้อมสถานะกำลังพิมพ์ หยุดพัก และออกจากแบบฟอร์ม",
+      },
+      {
+        en: "Put all business logic in one pure, unit-tested function kept separate from the networking code (35 tests), with types and validation shared between client and server.",
+        th: "รวมตรรกะทางธุรกิจทั้งหมดไว้ในฟังก์ชันบริสุทธิ์ฟังก์ชันเดียวที่แยกจากโค้ดด้านเครือข่ายและผ่านการทดสอบหน่วย (35 เทสต์) โดยใช้ไทป์และการตรวจสอบข้อมูลร่วมกันทั้งฝั่งไคลเอนต์และเซิร์ฟเวอร์",
+      },
+      {
+        en: "Kept data safe through dropped connections and restarts: auto-reconnect with an HTTP fallback, resumable sessions and atomic saves.",
+        th: "ปกป้องข้อมูลไม่ให้สูญหายเมื่อการเชื่อมต่อขาดหรือระบบรีสตาร์ท ด้วยการเชื่อมต่อใหม่อัตโนมัติพร้อมช่องทางสำรองผ่าน HTTP เซสชันที่กลับมากรอกต่อได้ และการบันทึกแบบอะตอมมิก",
+      },
+      {
+        en: "Added triage, live analytics, an audit log and emergency broadcasts, all keyboard and screen-reader accessible.",
+        th: "เพิ่มระบบคัดกรองผู้ป่วย การวิเคราะห์ข้อมูลแบบสด บันทึกการตรวจสอบ (audit log) และการประกาศเหตุฉุกเฉิน ทั้งหมดใช้งานได้ด้วยคีย์บอร์ดและโปรแกรมอ่านหน้าจอ",
+      },
+    ],
+    stack: [
+      { label: "Next.js", icon: "nextjs" },
+      { label: "React", icon: "react" },
+      { label: "TypeScript", icon: "typescript" },
+      { label: "Node.js", icon: "nodejs" },
+      { label: "Express", icon: "express" },
+      { label: "WebSockets", icon: "websockets" },
+      { label: "Tailwind CSS", icon: "tailwindcss" },
+      { label: "Render", icon: "render" },
+    ],
+    presentation: {
+      href: "https://health-care-intake.onrender.com",
+      label: { en: "View live demo", th: "ดูเดโมออนไลน์" },
+    },
+    galleryLabel: { en: "Health Care Intake screens", th: "หน้าจอระบบ Health Care Intake" },
+    galleryAspect: "landscape",
+    gallery: [
+      {
+        src: "/images/healthcare-intake/default-portal.png",
+        alt: {
+          en: "Welcome screen — choose between the Patient Portal and Staff Systems",
+          th: "หน้าต้อนรับ เลือกระหว่างพอร์ทัลผู้ป่วยและระบบเจ้าหน้าที่",
+        },
+        width: 1912,
+        height: 844,
+      },
+      {
+        src: "/images/healthcare-intake/patient-information.png",
+        alt: {
+          en: "Patient form — personal information and contact details sections",
+          th: "แบบฟอร์มผู้ป่วย ส่วนข้อมูลส่วนตัวและข้อมูลการติดต่อ",
+        },
+        width: 1061,
+        height: 899,
+      },
+      {
+        src: "/images/healthcare-intake/patient-information2.png",
+        alt: {
+          en: "Patient form — emergency contact, consent checkbox and submit button",
+          th: "แบบฟอร์มผู้ป่วย ส่วนผู้ติดต่อกรณีฉุกเฉิน การยินยอม และปุ่มส่งข้อมูล",
+        },
+        width: 1030,
+        height: 896,
+      },
+      {
+        src: "/images/healthcare-intake/staff-monitor.png",
+        alt: {
+          en: "Staff patient monitor — live session cards filling in field by field, with paused and submitted states",
+          th: "หน้าติดตามผู้ป่วยของเจ้าหน้าที่ การ์ดแต่ละเซสชันแสดงข้อมูลที่กรอกแบบสดทีละช่อง พร้อมสถานะหยุดพักและส่งแล้ว",
+        },
+        width: 1899,
+        height: 903,
+      },
+      {
+        src: "/images/healthcare-intake/patient-record.png",
+        alt: {
+          en: "Patient record — submitted details, intake progress and triage notes",
+          th: "ประวัติผู้ป่วย แสดงข้อมูลที่ส่งแล้ว ความคืบหน้าการลงทะเบียน และบันทึกการคัดกรอง",
+        },
+        width: 1895,
+        height: 900,
+      },
+      {
+        src: "/images/healthcare-intake/analytics.png",
+        alt: {
+          en: "Clinic analytics — today's intake, average intake time, completion rate and triage severity breakdown",
+          th: "หน้าวิเคราะห์ข้อมูลคลินิก จำนวนผู้ป่วยวันนี้ เวลาลงทะเบียนเฉลี่ย อัตราการกรอกครบ และสัดส่วนระดับความรุนแรงจากการคัดกรอง",
+        },
+        width: 1913,
+        height: 899,
+      },
+    ],
+  },
+  {
+    slug: "crema",
+    tag: "PERSONAL PROJECT · 2026",
+    name: "CREMA",
+    nameSuffix: { en: "— Coffee Machine Kiosk", th: "— ระบบคีออสก์เครื่องชงกาแฟ" },
+    meta: {
+      en: "Kiosk, mobile app, and web admin from one codebase",
+      th: "คีออสก์ แอปมือถือ และแอดมินบนเว็บ จากโค้ดชุดเดียว",
+    },
+    glyph: "coffee",
+    description: {
+      en: "A self-service coffee kiosk built from one Expo / React Native codebase that runs as a touchscreen kiosk, a native app, and a web panel. Customers order through Home → Menu → Customize → Payment → Thank you, while staff manage the live menu from a token-protected admin dashboard.",
+      th: "ระบบสั่งกาแฟแบบบริการตนเอง จากโค้ด Expo / React Native ชุดเดียว ใช้ได้ทั้งคีออสก์หน้าจอสัมผัส แอปเนทีฟ และหน้าเว็บ ลูกค้าสั่งผ่านขั้นตอน หน้าแรก → เมนู → ปรับแต่ง → ชำระเงิน → ขอบคุณ ส่วนพนักงานจัดการเมนูผ่านแดชบอร์ดแอดมินที่ป้องกันด้วยโทเคน",
+    },
+    bullets: [
+      {
+        en: "Implemented the EMVCo / PromptPay spec from scratch with no payment dependencies — TLV encoding, amount-embedded payloads, and a hand-written CRC-16/CCITT-FALSE checksum — so each order renders its own payment QR client-side, verified by Jest against reference vectors.",
+        th: "พัฒนามาตรฐาน EMVCo / พร้อมเพย์ขึ้นเองทั้งหมดโดยไม่ใช้ไลบรารีด้านการชำระเงิน ทั้งการเข้ารหัสแบบ TLV เพย์โหลดที่ระบุยอดเงิน และ checksum แบบ CRC-16/CCITT-FALSE ทำให้แต่ละคำสั่งซื้อสร้าง QR ได้เองฝั่งไคลเอนต์ ทดสอบด้วย Jest เทียบกับค่าอ้างอิง",
+      },
+      {
+        en: "Shipped one adaptive codebase across web, native, and kiosk, backed by a Flask REST API on MongoDB Atlas handling product CRUD, order storage, and CSV export.",
+        th: "ใช้โค้ดชุดเดียวรองรับทั้งเว็บ แอปเนทีฟ และคีออสก์ ทำงานร่วมกับ REST API ด้วย Flask บน MongoDB Atlas ที่จัดการข้อมูลสินค้า เก็บคำสั่งซื้อ และส่งออกเป็น CSV",
+      },
+      {
+        en: "Kept core logic in pure, framework-free modules behind a full quality gate — ESLint, Prettier, TypeScript and Jest on the frontend, pytest on the backend.",
+        th: "แยกตรรกะหลักไว้ในโมดูลที่ไม่ผูกกับเฟรมเวิร์ก ภายใต้ระบบตรวจคุณภาพครบชุด ทั้ง ESLint, Prettier, TypeScript และ Jest ฝั่งหน้าบ้าน และ pytest ฝั่งหลังบ้าน",
+      },
+    ],
+    stack: [
+      { label: "React Native", icon: "react" },
+      { label: "Expo", icon: "expo" },
+      { label: "TypeScript", icon: "typescript" },
+      { label: "Jest", icon: "jest" },
+      { label: "Flask", icon: "flask" },
+      { label: "MongoDB", icon: "mongodb" },
+      { label: "Python", icon: "python" },
+    ],
+    galleryLabel: { en: "CREMA kiosk screens", th: "หน้าจอคีออสก์ CREMA" },
+    galleryAspect: "landscape",
+    gallery: [
+      {
+        src: "/images/crema/home.png",
+        alt: {
+          en: "Kiosk attract screen — the CREMA mark over 'touch to start'",
+          th: "หน้าจอพักของคีออสก์ แสดงโลโก้ CREMA พร้อมข้อความแตะเพื่อเริ่ม",
+        },
+        width: 1910,
+        height: 884,
+      },
+      {
+        src: "/images/crema/menu.png",
+        alt: {
+          en: "Step 1 — choose your coffee, with Mocca, Americano, Espresso, Cappuccino and Latte",
+          th: "ขั้นที่ 1 เลือกกาแฟ ทั้งมอคค่า อเมริกาโน่ เอสเพรสโซ่ คาปูชิโน่ และลาเต้",
+        },
+        width: 1911,
+        height: 611,
+      },
+      {
+        src: "/images/crema/customize.png",
+        alt: {
+          en: "Step 2 — customize sweetness and hot or cold, with a running total",
+          th: "ขั้นที่ 2 ปรับระดับความหวานและเลือกร้อนหรือเย็น พร้อมแสดงราคารวม",
+        },
+        width: 1892,
+        height: 871,
+      },
+      {
+        src: "/images/crema/payment.png",
+        alt: {
+          en: "Step 3 — the generated PromptPay QR encoding this order's exact amount, awaiting payment",
+          th: "ขั้นที่ 3 QR พร้อมเพย์ที่สร้างขึ้นพร้อมระบุยอดเงินของคำสั่งซื้อนี้ รอการชำระเงิน",
+        },
+        width: 1894,
+        height: 792,
+      },
+      {
+        src: "/images/crema/thank-you.png",
+        alt: {
+          en: "Order confirmed — the drink is brewing, with its order number, before returning home",
+          th: "ยืนยันคำสั่งซื้อแล้ว กำลังชงเครื่องดื่ม พร้อมหมายเลขคำสั่งซื้อ ก่อนกลับสู่หน้าแรก",
+        },
+        width: 1890,
+        height: 868,
+      },
+      {
+        src: "/images/crema/admin log-in.png",
+        alt: {
+          en: "CREMA admin sign-in screen requesting the admin passcode",
+          th: "หน้าลงชื่อเข้าใช้ระบบแอดมิน CREMA ที่ให้กรอกรหัสผ่านแอดมิน",
+        },
+        width: 1913,
+        height: 800,
+      },
+      {
+        src: "/images/crema/product management.png",
+        alt: {
+          en: "CREMA admin product manager showing menu items, prices, sweetness settings, and availability",
+          th: "หน้าจัดการสินค้า CREMA แสดงเมนู ราคา ระดับความหวาน และสถานะการจำหน่าย",
+        },
+        width: 1915,
+        height: 629,
+      },
+      {
+        src: "/images/crema/order history.png",
+        alt: {
+          en: "CREMA purchase history with order totals, revenue, and individual drink orders",
+          th: "ประวัติการสั่งซื้อ CREMA แสดงจำนวนคำสั่งซื้อ รายได้ และรายการเครื่องดื่มแต่ละรายการ",
+        },
+        width: 1914,
+        height: 782,
       },
     ],
   },
