@@ -10,8 +10,8 @@ import { Lightbox } from "@/components/Lightbox";
 
 /** Cell shape. Portrait matches a phone's ~9:19; landscape a 16:10 capture. */
 const cell = {
-  portrait: { ratio: "aspect-[9/19]", cols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5", sizes: "(max-width:640px) 45vw, (max-width:1024px) 30vw, 190px" },
-  landscape: { ratio: "aspect-[16/10]", cols: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3", sizes: "(max-width:640px) 90vw, (max-width:1024px) 45vw, 320px" },
+  portrait: { ratio: "aspect-[9/19]", cols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5", sizes: "(max-width:640px) 45vw, (max-width:1024px) 30vw, 240px" },
+  landscape: { ratio: "aspect-[16/10]", cols: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3", sizes: "(max-width:640px) 90vw, (max-width:1024px) 45vw, 400px" },
 };
 
 export function Album({
@@ -29,7 +29,7 @@ export function Album({
 
   return (
     <FadeIn className="py-8">
-      <div className="max-w-[1040px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-6">
         <div className={`grid ${cols} gap-4`} role="group" aria-label={label[lang]}>
           {images.map((img) => (
             <button

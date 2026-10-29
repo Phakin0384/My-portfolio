@@ -40,7 +40,7 @@ export default async function AlbumPage({ params }: { params: Promise<{ slug: st
         label={project.galleryLabel!}
         aspect={project.galleryAspect}
       />
-      <div className="max-w-[1040px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-6">
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 font-mono text-[13px] tracking-wide text-accent no-underline transition-transform duration-200 hover:-translate-x-0.5"
